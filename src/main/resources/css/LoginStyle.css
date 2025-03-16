@@ -1,0 +1,37 @@
+.anchor-pane {
+    -fx-background-color: white;
+}
+.pane-header {
+    -fx-border-color: #007DFF blue gray blue;
+    -fx-border-width: 5px 0px 1px 0px;
+}
+.button:hover {
+    -fx-cursor: hand;
+}
+.button-icon {
+    -fx-background-color: #ececec;
+    -fx-opacity: 1.0;
+    -fx-text-fill: white;
+    -fx-background-radius: 0 8px 8px 0;
+    -fx-border-radius: 0 8px 8px 0;
+    -fx-border-width: 1px 1px 1px 0;
+    -fx-border-color: #007DFF;
+}
+.text-field {
+    -fx-background-radius: 8px 0 0 8px;
+    -fx-border-radius: 8px 0 0 8px;
+    -fx-border-width: 1px 0 1px 1px;
+    -fx-border-color: #007DFF;
+}
+.text-field:focused {
+    -fx-background-color: white;
+    -fx-border-color: #007DFF;
+    -fx-border-width: 1px 0 1px 1px;
+    -fx-border-radius: 8px 0 0 8px;
+    -fx-background-radius: 8px 0 0 8px;
+    -fx-box-shadow: none;
+}
+.login-button {
+    -fx-background-color: #007DFF;
+    -fx-text-fill: white;
+}

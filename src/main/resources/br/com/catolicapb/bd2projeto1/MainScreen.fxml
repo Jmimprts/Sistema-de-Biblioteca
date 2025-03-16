@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<StackPane stylesheets="@../../../../css/MainStyle.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.catolicapb.bd2projeto1.controller.MainScreenController">
+   <children>
+      <AnchorPane fx:id="mainAnchor" prefHeight="504.0" prefWidth="547.0">
+         <children>
+            <BorderPane prefHeight="602.0" prefWidth="859.0" stylesheets="@../../../../css/MainStyle.css">
+               <left>
+                  <AnchorPane prefHeight="473.0" prefWidth="110.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <AnchorPane prefHeight="626.0" prefWidth="172.0" styleClass="nav-form">
+                           <children>
+                              <Button fx:id="homeBtn" layoutX="1.0" layoutY="85.0" mnemonicParsing="false" onAction="#homeBtnAction" prefHeight="25.0" prefWidth="171.0" styleClass="nav-btn" text="Inicio">
+                                 <graphic>
+                                    <FontIcon fill="WHITE" iconLiteral="fas-home" iconSize="16" />
+                                 </graphic>
+                              </Button>
+                              <Button fx:id="usersBtn" layoutX="1.0" layoutY="146.0" mnemonicParsing="false" onAction="#usersBtnAction" prefHeight="25.0" prefWidth="171.0" styleClass="nav-btn" text="Usuários">
+                                 <graphic>
+                                    <FontIcon fill="WHITE" iconLiteral="fas-users" iconSize="16" />
+                                 </graphic>
+                              </Button>
+                              <Button fx:id="readersBtn" layoutX="1.0" layoutY="210.0" mnemonicParsing="false" onAction="#readersBtnAction" prefHeight="25.0" prefWidth="171.0" styleClass="nav-btn" text="Leitores">
+                                 <graphic>
+                                    <FontIcon fill="WHITE" iconLiteral="fas-book-reader" iconSize="16" />
+                                 </graphic>
+                              </Button>
+                              <Button fx:id="booksBtn" layoutX="1.0" layoutY="270.0" mnemonicParsing="false" onAction="#booksBtnAction" prefHeight="25.0" prefWidth="171.0" styleClass="nav-btn" text="Livros">
+                                 <graphic>
+                                    <FontIcon fill="WHITE" iconLiteral="fas-book" iconSize="16" />
+                                 </graphic>
+                              </Button>
+                              <Button fx:id="loansBtn" layoutX="1.0" layoutY="323.0" mnemonicParsing="false" onAction="#loansBtnAction" prefHeight="30.0" prefWidth="171.0" styleClass="nav-btn" text="Empréstimos">
+                                 <graphic>
+                                    <FontIcon iconColor="WHITE" iconLiteral="fas-handshake" iconSize="16" />
+                                 </graphic>
+                              </Button>
+                              <Button layoutX="15.0" layoutY="577.0" mnemonicParsing="false" onAction="#btLogoutAction" prefHeight="35.0" prefWidth="138.0" text="Deslogar" textFill="WHITE">
+                                 <graphic>
+                                    <FontIcon iconColor="WHITE" iconLiteral="fas-sign-out-alt" iconSize="16" />
+                                 </graphic>
+                                 <styleClass>
+                                    <String fx:value="close-icon" />
+                                    <String fx:value="shadow" />
+                                 </styleClass>
+                              </Button>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+               </left>
+               <top>
+                  <AnchorPane prefHeight="72.0" prefWidth="859.0" styleClass="top-form" BorderPane.alignment="CENTER">
+                     <children>
+                        <AnchorPane prefHeight="72.0" prefWidth="859.0" styleClass="semi-top-form">
+                           <children>
+                              <Label layoutX="24.0" layoutY="19.0" text="LibraTech">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                              <Button layoutX="786.0" layoutY="24.0" mnemonicParsing="false" onAction="#closeBtnAction" prefHeight="24.0" prefWidth="50.0" styleClass="control-buttons">
+                                 <graphic>
+                                    <FontIcon iconLiteral="fas-times" />
+                                 </graphic>
+                              </Button>
+                              <Button layoutX="712.0" layoutY="25.0" mnemonicParsing="false" onAction="#minimizeBtnAction" prefHeight="24.0" prefWidth="50.0" styleClass="control-buttons">
+                                 <graphic>
+                                    <FontIcon iconLiteral="fas-minus" />
+                                 </graphic>
+                              </Button>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+               </top>
+               <center>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <fx:include fx:id="homeAnchor" layoutX="15.0" layoutY="15.0" source="HomeAnchor.fxml" />
+                        <fx:include fx:id="usersAnchor" layoutX="15.0" layoutY="15.0" source="UsersAnchor.fxml" />
+                        <fx:include fx:id="readersAnchor" layoutX="15.0" layoutY="15.0" source="ReadersAnchor.fxml" />
+                        <fx:include fx:id="booksAnchor" layoutX="15.0" layoutY="15.0" source="BooksAnchor.fxml" />
+                        <fx:include fx:id="loansAnchor" layoutX="15.0" layoutY="15.0" source="LoansAnchor.fxml" />
+                     </children>
+                  </AnchorPane>
+               </center>
+            </BorderPane>
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>

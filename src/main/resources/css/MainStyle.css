@@ -1,0 +1,62 @@
+.top-form {
+    -fx-background-color:#efefef;
+    -fx-border-color:#000;
+    -fx-border-width:.2px .4px .8px .4px;
+}
+
+.semi-top-form {
+    -fx-background-color:#fff;
+    -fx-border-color:#000;
+    -fx-border-width:.4px .4px .2px .4px;
+}
+
+.nav-form {
+    -fx-background-color:linear-gradient(to bottom right, #272b3f, #256b51);
+}
+
+.control-buttons {
+    -fx-background-color:transparent;
+    -fx-cursor:hand;
+}
+
+.control-buttons:hover {
+    -fx-background-color:#ff0000;
+}
+
+.nav-btn {
+    -fx-font-size:14px;
+    -fx-background-color:transparent;
+    -fx-cursor:hand;
+    -fx-text-fill:#fff;
+    -fx-alignment:CENTER-LEFT;
+}
+
+.nav-btn:hover {
+    -fx-font-weight:bold;
+}
+
+.nav-btn.active {
+    -fx-background-color:linear-gradient(to bottom right, #3a4368, #28966c);
+    -fx-font-weight:bold;
+}
+
+.close-icon {
+    -fx-background-color: rgba(255, 0, 0, 0.3);
+    -fx-background-radius:10px;
+    -fx-font-weight:normal;
+    -fx-cursor:hand;
+}
+
+.close-icon:hover {
+    -fx-background-color: rgba(255, 0, 0, 0.6);
+    -fx-font-weight:bold;
+}
+
+.shadow {
+    -fx-effect:dropshadow(three-pass-box, rgba(0,0,0,0.5), 6,0,0,0);
+}
+
+.white-bg {
+    -fx-background-color:#fff;
+    -fx-background-radius:8px;
+}
