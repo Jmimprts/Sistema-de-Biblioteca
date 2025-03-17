@@ -18,11 +18,7 @@ public class Emprestimo {
     @JoinColumn(name = "leitor_id")
     private Leitor leitor;
 
-    @ManyToMany
-    @JoinTable(
-            name = "emprestimo_livro",
-            joinColumns = @JoinColumn(name = "emprestimo_id"),
-            inverseJoinColumns = @JoinColumn(name = "livro_id")
-    )
-    private List<Livro> livros;
+    @ManyToOne
+    @JoinColumn(name = "livro_id")
+    private Livro livro;
 }
