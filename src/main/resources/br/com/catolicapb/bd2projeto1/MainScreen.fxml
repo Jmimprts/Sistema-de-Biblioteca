@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<StackPane stylesheets="@../../../../css/MainStyle.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.catolicapb.bd2projeto1.controller.MainScreenController">
+<StackPane stylesheets="@../../../../css/MainStyle.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.catolicapb.bd2projeto1.javafx.controllers.MainScreenController">
    <children>
       <AnchorPane fx:id="mainAnchor" prefHeight="504.0" prefWidth="547.0">
          <children>

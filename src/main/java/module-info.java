@@ -5,9 +5,9 @@ module br.com.catolicapb.bd2projeto1 {
     requires static lombok;
     requires org.hibernate.orm.core;
 
-    opens br.com.catolicapb.bd2projeto1.controller to javafx.fxml;
-    opens br.com.catolicapb.bd2projeto1.entity to org.hibernate.orm.core, jakarta.persistence;
+    opens br.com.catolicapb.bd2projeto1.javafx.controllers to javafx.fxml;
+    opens br.com.catolicapb.bd2projeto1.entity to org.hibernate.orm.core, jakarta.persistence, javafx.base, javafx.fxml;
 
     exports br.com.catolicapb.bd2projeto1.util;
-    exports br.com.catolicapb.bd2projeto1.controller;
+    exports br.com.catolicapb.bd2projeto1.javafx.controllers;
 }

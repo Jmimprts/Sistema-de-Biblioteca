@@ -1,5 +1,6 @@
 package br.com.catolicapb.bd2projeto1.util;
 
+import br.com.catolicapb.bd2projeto1.javafx.interfaces.IOnChangeScreen;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -7,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class ScreenManager extends Application {
@@ -14,6 +16,7 @@ public class ScreenManager extends Application {
     private static Stage stage;
     private static Scene loginScene;
     private static Scene mainScene;
+    private static ArrayList<IOnChangeScreen> listeners = new ArrayList<>();
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -39,6 +42,20 @@ public class ScreenManager extends Application {
             case "mainScene":
                 stage.setScene(mainScene);
                 break;
+        }
+    }
+
+    public static void notifyAnchorChange(String anchorName) {
+        notifyAllListeners(anchorName);
+    }
+
+    public static void addOnChangeScreenListener(IOnChangeScreen newListener) {
+        listeners.add(newListener);
+    }
+
+    private static void notifyAllListeners(String newScreen) {
+        for (IOnChangeScreen listener : listeners) {
+            listener.onScreenChanged(newScreen);
         }
     }
 }

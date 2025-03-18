@@ -1,4 +1,4 @@
-package br.com.catolicapb.bd2projeto1.controller;
+package br.com.catolicapb.bd2projeto1.javafx.controllers;
 
 import br.com.catolicapb.bd2projeto1.util.ScreenManager;
 import javafx.fxml.FXML;
@@ -65,32 +65,32 @@ public class MainScreenController {
 
     @FXML
     void homeBtnAction() {
-        showAnchor(homeAnchor, homeBtn);
+        showAnchor(homeAnchor, homeBtn, "homeAnchor");
     }
 
     @FXML
     void usersBtnAction() {
-        showAnchor(usersAnchor, usersBtn);
+        showAnchor(usersAnchor, usersBtn, "usersAnchor");
     }
 
     @FXML
     void readersBtnAction() {
-        showAnchor(readersAnchor, readersBtn);
+        showAnchor(readersAnchor, readersBtn, "readersAnchor");
     }
 
     @FXML
     void booksBtnAction() {
-        showAnchor(booksAnchor, booksBtn);
+        showAnchor(booksAnchor, booksBtn, "booksAnchor");
     }
 
     @FXML
     void loansBtnAction() {
-        showAnchor(loansAnchor, loansBtn);
+        showAnchor(loansAnchor, loansBtn, "loansAnchor");
     }
 
     private void logoutProcedure() {
         ScreenManager.changeScene("loginScene");
-        showAnchor(homeAnchor, homeBtn);
+        showAnchor(homeAnchor, homeBtn, "homeAnchor");
     }
 
     private void close() {
@@ -102,7 +102,7 @@ public class MainScreenController {
         stage.setIconified(true);
     }
 
-    private void showAnchor(AnchorPane anchorToShow, Button buttonToFocus) {
+    private void showAnchor(AnchorPane anchorToShow, Button buttonToFocus, String anchorName) {
         if (anchorToShow != currentAnchor) {
             currentAnchor.setVisible(false);
             currentButton.getStyleClass().remove("active");
@@ -110,6 +110,8 @@ public class MainScreenController {
             buttonToFocus.getStyleClass().add("active");
             currentAnchor = anchorToShow;
             currentButton = buttonToFocus;
+
+            ScreenManager.notifyAnchorChange(anchorName);
         }
     }
 }

@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<AnchorPane prefHeight="597.0" prefWidth="658.0" stylesheets="@../../../../css/UsersStyle.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.catolicapb.bd2projeto1.controller.ReadersAnchorController">
+<AnchorPane prefHeight="597.0" prefWidth="658.0" stylesheets="@../../../../css/UsersStyle.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.catolicapb.bd2projeto1.javafx.controllers.ReadersAnchorController">
    <styleClass>
       <String fx:value="white-bg" />
       <String fx:value="shadow" />

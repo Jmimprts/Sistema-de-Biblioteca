@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<AnchorPane prefHeight="457.0" prefWidth="600.0" styleClass="anchor-pane" stylesheets="@../../../../css/LoginStyle.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.catolicapb.bd2projeto1.controller.LoginScreenController">
+<AnchorPane prefHeight="457.0" prefWidth="600.0" styleClass="anchor-pane" stylesheets="@../../../../css/LoginStyle.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.catolicapb.bd2projeto1.javafx.controllers.LoginScreenController">
    <children>
       <Button layoutX="264.0" layoutY="367.0" mnemonicParsing="false" onAction="#btEnterAction" prefHeight="25.0" prefWidth="80.0" styleClass="login-button" text="Entrar" />
       <TextField layoutX="211.0" layoutY="246.0" />

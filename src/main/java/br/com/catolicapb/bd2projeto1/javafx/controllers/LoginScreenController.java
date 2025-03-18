@@ -1,4 +1,4 @@
-package br.com.catolicapb.bd2projeto1.controller;
+package br.com.catolicapb.bd2projeto1.javafx.controllers;
 
 import br.com.catolicapb.bd2projeto1.util.ScreenManager;
 import javafx.fxml.FXML;
