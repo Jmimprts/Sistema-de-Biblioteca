@@ -18,6 +18,6 @@ public class Livro {
     @OneToMany(mappedBy = "livro")
     private List<Reserva> reservas;
 
-    @ManyToMany(mappedBy = "livros")
+    @OneToMany(mappedBy = "livro")
     private List<Emprestimo> emprestimos;
 }
