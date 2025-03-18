@@ -71,12 +71,14 @@
             <String fx:value="anchor-bg" />
             <String fx:value="shadow" />
          </styleClass>
+         <children>
+            <Label layoutX="14.0" layoutY="8.0" text="Usuários">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+         </children>
       </AnchorPane>
-      <Label layoutX="14.0" layoutY="8.0" text="Usuários">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Label>
    </children>
    <styleClass>
       <String fx:value="anchor-bg" />
