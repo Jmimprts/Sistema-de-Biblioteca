@@ -1,4 +1,4 @@
-package br.com.catolicapb.bd2projeto1.application;
+package br.com.catolicapb.bd2projeto1.application.services;
 
 import br.com.catolicapb.bd2projeto1.application.interfaces.IUsuarioService;
 import br.com.catolicapb.bd2projeto1.infrastructure.Repositories.UsuarioRepository;

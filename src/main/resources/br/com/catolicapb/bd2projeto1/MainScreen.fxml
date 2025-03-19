@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<StackPane stylesheets="@../../../../css/MainStyle.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.catolicapb.bd2projeto1.controller.MainScreenController">
+<StackPane stylesheets="@../../../../css/MainStyle.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.catolicapb.bd2projeto1.javafx.controllers.MainScreenController">
    <children>
       <AnchorPane fx:id="mainAnchor" prefHeight="504.0" prefWidth="547.0">
          <children>
@@ -53,6 +53,11 @@
                                     <String fx:value="shadow" />
                                  </styleClass>
                               </Button>
+                              <Button fx:id="reservationsBtn" layoutX="1.0" layoutY="381.0" mnemonicParsing="false" onAction="#reservationsBtnAction" prefHeight="30.0" prefWidth="171.0" styleClass="nav-btn" text="Reservas">
+                                 <graphic>
+                                    <FontIcon iconColor="WHITE" iconLiteral="fas-calendar-alt" iconSize="16" />
+                                 </graphic>
+                              </Button>
                            </children>
                         </AnchorPane>
                      </children>
@@ -91,6 +96,7 @@
                         <fx:include fx:id="readersAnchor" layoutX="15.0" layoutY="15.0" source="ReadersAnchor.fxml" />
                         <fx:include fx:id="booksAnchor" layoutX="15.0" layoutY="15.0" source="BooksAnchor.fxml" />
                         <fx:include fx:id="loansAnchor" layoutX="15.0" layoutY="15.0" source="LoansAnchor.fxml" />
+                        <fx:include fx:id="reservationsAnchor" layoutX="15.0" layoutY="15.0" source="ReservationsAnchor.fxml" />
                      </children>
                   </AnchorPane>
                </center>

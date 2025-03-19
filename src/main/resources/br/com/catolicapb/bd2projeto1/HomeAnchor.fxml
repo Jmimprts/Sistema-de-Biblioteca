@@ -7,7 +7,7 @@
 <?import javafx.scene.text.Font?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<AnchorPane prefHeight="597.0" prefWidth="658.0" stylesheets="@../../../../css/HomeStyle.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.catolicapb.bd2projeto1.controller.HomeAnchorController">
+<AnchorPane prefHeight="597.0" prefWidth="658.0" stylesheets="@../../../../css/HomeStyle.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.catolicapb.bd2projeto1.javafx.controllers.HomeAnchorController">
    <children>
       <Label layoutX="36.0" layoutY="28.0" text="Dashboard">
          <font>
@@ -28,7 +28,7 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label layoutX="106.0" layoutY="41.0" text="0">
+                  <Label fx:id="lblUsersCount" layoutX="106.0" layoutY="41.0" text="0">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
@@ -68,7 +68,7 @@
             <String fx:value="shadow" />
          </styleClass>
       </AnchorPane>
-      <AnchorPane layoutX="68.0" layoutY="362.0" prefHeight="90.0" prefWidth="230.0">
+      <AnchorPane layoutX="68.0" layoutY="299.0" prefHeight="90.0" prefWidth="230.0">
          <children>
             <Pane layoutX="6.0" layoutY="6.0" prefHeight="78.0" prefWidth="78.0">
                <styleClass>
@@ -95,7 +95,7 @@
             <String fx:value="shadow" />
          </styleClass>
       </AnchorPane>
-      <AnchorPane layoutX="361.0" layoutY="362.0" prefHeight="90.0" prefWidth="230.0">
+      <AnchorPane layoutX="361.0" layoutY="299.0" prefHeight="90.0" prefWidth="230.0">
          <children>
             <Pane layoutX="6.0" layoutY="6.0" prefHeight="78.0" prefWidth="78.0">
                <children>
@@ -115,6 +115,33 @@
                   <String fx:value="white-bg" />
                   <String fx:value="leans-card" />
                </styleClass>
+            </Pane>
+         </children>
+         <styleClass>
+            <String fx:value="white-bg" />
+            <String fx:value="shadow" />
+         </styleClass>
+      </AnchorPane>
+      <AnchorPane layoutX="214.0" layoutY="444.0" prefHeight="90.0" prefWidth="230.0">
+         <children>
+            <Pane layoutX="6.0" layoutY="6.0" prefHeight="78.0" prefWidth="78.0">
+               <styleClass>
+                  <String fx:value="white-bg" />
+                  <String fx:value="reservations-card" />
+               </styleClass>
+               <children>
+                  <FontIcon iconColor="WHITE" iconLiteral="fas-calendar-alt" iconSize="48" layoutX="18.0" layoutY="57.0" />
+                  <Label layoutX="103.0" layoutY="7.0" text="Reservas">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="106.0" layoutY="41.0" text="0">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
             </Pane>
          </children>
          <styleClass>
