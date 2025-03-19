@@ -1,6 +1,8 @@
 package br.com.catolicapb.bd2projeto1.javafx.controllers;
 
 import br.com.catolicapb.bd2projeto1.entity.Emprestimo;
+import br.com.catolicapb.bd2projeto1.entity.Leitor;
+import br.com.catolicapb.bd2projeto1.entity.Livro;
 import br.com.catolicapb.bd2projeto1.infrastructure.Repositories.EmprestimoRepository;
 import br.com.catolicapb.bd2projeto1.javafx.interfaces.IOnChangeScreen;
 import br.com.catolicapb.bd2projeto1.util.ScreenManager;
@@ -9,6 +11,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -23,7 +26,13 @@ public class LoansAnchorController implements IOnChangeScreen {
     @FXML
     private TableColumn<Emprestimo, String> bookColumn;
     @FXML
+    private ChoiceBox<Livro> cbBook;
+    @FXML
     private ChoiceBox<String> cbFilter;
+    @FXML
+    private ChoiceBox<Leitor> cbReader;
+    @FXML
+    private DatePicker dpReturnDate;
     @FXML
     private TableColumn<Emprestimo, LocalDate> loanDateColumn;
     @FXML
@@ -42,6 +51,11 @@ public class LoansAnchorController implements IOnChangeScreen {
 
         configureTableColumns();
         loadAllEmprestimos();
+    }
+
+    @FXML
+    void addBtnAction() {
+
     }
 
     @Override
