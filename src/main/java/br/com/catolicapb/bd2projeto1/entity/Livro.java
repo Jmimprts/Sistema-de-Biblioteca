@@ -12,7 +12,7 @@ public class Livro {
     private Long id;
 
     private String titulo, autor;
-    private LocalDate anoPublicacao;
+    private int anoPublicacao;
     private int quantidadeDisponivel;
 
     @OneToMany(mappedBy = "livro")

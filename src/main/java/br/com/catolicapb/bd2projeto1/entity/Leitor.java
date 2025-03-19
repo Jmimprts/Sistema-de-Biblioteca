@@ -11,6 +11,7 @@ public class Leitor {
     private Long id;
 
     private String nome;
+    private String cpf;
 
     @OneToMany(mappedBy = "leitor")
     private List<Emprestimo> emprestimos;

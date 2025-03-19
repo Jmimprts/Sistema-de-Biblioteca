@@ -40,7 +40,7 @@ public class UsersAnchorController implements IOnChangeScreen {
         ScreenManager.addOnChangeScreenListener(this);
 
         configureTableColumns();
-        loadUsuarios();
+        loadAllUsuarios();
     }
 
     @FXML
@@ -51,7 +51,7 @@ public class UsersAnchorController implements IOnChangeScreen {
     @Override
     public void onScreenChanged(String newScreen) {
         if (newScreen.equals("usersAnchor")) {
-            System.out.println("AnchorPane dos usuários carregada!");
+            loadAllUsuarios();
         }
     }
 
@@ -60,7 +60,7 @@ public class UsersAnchorController implements IOnChangeScreen {
         emailColumn.setCellValueFactory(new PropertyValueFactory<>("email"));
     }
 
-    private void loadUsuarios() {
+    private void loadAllUsuarios() {
 
         //SOMENTE TESTES, ALTERAR
         List<Usuario> usuarios = usuarioRepository.getAllUsuarios();
@@ -87,7 +87,7 @@ public class UsersAnchorController implements IOnChangeScreen {
         usuarioRepository.addUsuario(usuario);
 
         clearFields();
-        loadUsuarios();
+        loadAllUsuarios();
         AlertHelper.showAlert("Usuário cadastrado com sucesso!", "INFO");
     }
 

@@ -21,6 +21,8 @@ public class MainScreenController {
     @FXML
     private AnchorPane usersAnchor;
     @FXML
+    private AnchorPane reservationsAnchor;
+    @FXML
     private Button homeBtn;
     @FXML
     private Button usersBtn;
@@ -30,6 +32,8 @@ public class MainScreenController {
     private Button booksBtn;
     @FXML
     private Button loansBtn;
+    @FXML
+    private Button reservationsBtn;
 
     private AnchorPane currentAnchor;
     private Button currentButton;
@@ -44,6 +48,7 @@ public class MainScreenController {
         readersAnchor.setVisible(false);
         booksAnchor.setVisible(false);
         loansAnchor.setVisible(false);
+        reservationsAnchor.setVisible(false);
 
         homeBtn.getStyleClass().add("active");
     }
@@ -86,6 +91,11 @@ public class MainScreenController {
     @FXML
     void loansBtnAction() {
         showAnchor(loansAnchor, loansBtn, "loansAnchor");
+    }
+
+    @FXML
+    void reservationsBtnAction() {
+        showAnchor(reservationsAnchor, reservationsBtn, "reservationsAnchor");
     }
 
     private void logoutProcedure() {

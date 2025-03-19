@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.String?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
@@ -22,16 +23,39 @@
             <String fx:value="shadow" />
          </styleClass>
          <children>
-            <TableView layoutX="12.0" layoutY="112.0" prefHeight="272.0" prefWidth="631.0">
+            <TableView fx:id="readersTv" layoutX="12.0" layoutY="112.0" prefHeight="272.0" prefWidth="631.0">
                <columns>
-                  <TableColumn prefWidth="142.0" text="ID" />
-                  <TableColumn prefWidth="488.0" text="Nome" />
+                  <TableColumn fx:id="nameColumn" prefWidth="213.0" text="Nome" />
+                  <TableColumn fx:id="CPFColumn" prefWidth="168.0" text="CPF" />
+                  <TableColumn fx:id="reservesColumn" prefWidth="125.0" text="Qtde. Reservas" />
+                  <TableColumn fx:id="loansColumn" prefWidth="124.0" text="Qtde. Empréstimos" />
                </columns>
             </TableView>
             <TextField fx:id="searchTf" layoutX="14.0" layoutY="65.0" prefHeight="30.0" prefWidth="314.0" promptText="Procurar" styleClass="search" />
             <FontIcon iconLiteral="fas-search" iconSize="16" layoutX="21.0" layoutY="86.0" />
             <ChoiceBox fx:id="cbFilter" layoutX="431.0" layoutY="68.0" prefHeight="25.0" prefWidth="212.0" />
             <Label layoutX="392.0" layoutY="72.0" text="Filtrar" />
+            <Button layoutX="494.0" layoutY="547.0" mnemonicParsing="false" onAction="#addBtnAction" prefHeight="30.0" prefWidth="90.0" text="Adicionar">
+               <font>
+                  <Font name="Tahoma" size="14.0" />
+               </font>
+               <styleClass>
+                  <String fx:value="add-btn" />
+                  <String fx:value="shadow" />
+               </styleClass>
+            </Button>
+            <TextField fx:id="nameTf" layoutX="115.0" layoutY="421.0" />
+            <Label layoutX="64.0" layoutY="425.0" text="Nome:">
+               <font>
+                  <Font name="Tahoma" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="CPFTf" layoutX="427.0" layoutY="421.0" />
+            <Label layoutX="385.0" layoutY="425.0" text="CPF:">
+               <font>
+                  <Font name="Tahoma" size="14.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="46.0" prefWidth="658.0">
