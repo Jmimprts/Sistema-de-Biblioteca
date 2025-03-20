@@ -52,6 +52,10 @@ public class BooksAnchorController implements IOnChangeScreen {
         String year = yearTf.getText().trim();
         String author = authorTf.getText().trim();
 
+        if (!validateFields(author, year, title, quantity)){
+            return;
+        }
+
         Livro livro = new Livro();
         livro.setQuantidadeDisponivel(Integer.parseInt(quantity));
         livro.setTitulo(title);
@@ -59,6 +63,7 @@ public class BooksAnchorController implements IOnChangeScreen {
         livro.setAutor(author);
         livroRepository.addLivro(livro);
 
+        clearFields();
         AlertHelper.showAlert("Livro adicionado com sucesso", "INFO");
     }
 
@@ -109,5 +114,45 @@ public class BooksAnchorController implements IOnChangeScreen {
         if (livros != null) {
             booksTv.setItems(FXCollections.observableArrayList(livros));
         }
+    }
+
+    private void clearFields() {
+        quantityTf.clear();
+        titleTf.clear();
+        yearTf.clear();
+        authorTf.clear();
+    }
+
+    private boolean validateFields(String author, String year, String title, String quantity) {
+        StringBuilder errorMessage = new StringBuilder();
+
+        if (author.isEmpty()) {
+            errorMessage.append("⚠ O campo Autor deve ser preenchido.\n");
+        }
+
+        if (year.isEmpty()) {
+            errorMessage.append("⚠ O campo Email deve ser preenchido.\n");
+        } else if (year.matches("^[0-9]+$")) {
+            errorMessage.append("⚠ O Campo só pode aceitar caracteres numéricos.\n");
+        }else if (year.length() != 4) {
+            errorMessage.append("⚠ Número deve ter 4 caracteres.\n");
+        }
+
+        if (quantity.isEmpty()) {
+            errorMessage.append("⚠ O campo quantidade deve ser preenchido.\n");
+        } else if (quantity.matches("^[0-9]+$")) {
+            errorMessage.append("⚠ O Campo só pode aceitar caracteres numéricos.\n");
+        }
+
+        if (title.isEmpty()) {
+            errorMessage.append("⚠ O campo título deve ser preenchido.\n");
+        }
+
+        if (!errorMessage.isEmpty()) {
+            AlertHelper.showAlert(errorMessage.toString().trim(), "ERROR");
+            return false;
+        }
+
+        return true;
     }
 }
