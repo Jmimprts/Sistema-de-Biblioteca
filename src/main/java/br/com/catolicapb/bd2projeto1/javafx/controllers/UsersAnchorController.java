@@ -114,7 +114,7 @@ public class UsersAnchorController implements IOnChangeScreen {
             errorMessage.append("⚠ As senhas digitadas não coincidem.\n");
         }
 
-        if (errorMessage.length() > 0) {
+        if (!errorMessage.isEmpty()) {
             AlertHelper.showAlert(errorMessage.toString().trim(), "ERROR");
             return false;
         }

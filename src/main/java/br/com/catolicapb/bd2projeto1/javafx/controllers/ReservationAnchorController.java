@@ -4,6 +4,8 @@ import br.com.catolicapb.bd2projeto1.entity.Leitor;
 import br.com.catolicapb.bd2projeto1.entity.Livro;
 import br.com.catolicapb.bd2projeto1.entity.Reserva;
 import br.com.catolicapb.bd2projeto1.enums.StatusReserva;
+import br.com.catolicapb.bd2projeto1.infrastructure.Repositories.LeitorRepository;
+import br.com.catolicapb.bd2projeto1.infrastructure.Repositories.LivroRepository;
 import br.com.catolicapb.bd2projeto1.infrastructure.Repositories.ReservaRepository;
 import br.com.catolicapb.bd2projeto1.javafx.interfaces.IOnChangeScreen;
 import br.com.catolicapb.bd2projeto1.util.AlertHelper;
@@ -22,6 +24,8 @@ import java.util.List;
 public class ReservationAnchorController implements IOnChangeScreen {
 
     ReservaRepository reservaRepository = new ReservaRepository();
+    LeitorRepository leitorRepository = new LeitorRepository();
+    LivroRepository livroRepository = new LivroRepository();
 
     @FXML
     private TableColumn<Reserva, String> bookColumn;
@@ -63,12 +67,20 @@ public class ReservationAnchorController implements IOnChangeScreen {
         Livro livro = cbBook.getValue();
         Leitor leitor = cbReader.getValue();
 
+        if(!validateFields()){
+            return;
+        }
+
         Reserva reserva = new Reserva();
         reserva.setDataReserva(dataReserva);
         reserva.setLivro(livro);
         reserva.setLeitor(leitor);
         reservaRepository.addReserva(reserva);
 
+        loadAllReservations();
+        loadUnavailableBooksComboBox();
+        loadReadersComboBox();
+        clearInputFields();
         AlertHelper.showAlert("Reserva realizada com sucesso!", "INFO");
     }
 
@@ -76,7 +88,32 @@ public class ReservationAnchorController implements IOnChangeScreen {
     public void onScreenChanged(String newScreen) {
         if (newScreen.equals("reservationsAnchor")) {
             loadAllReservations();
+            loadUnavailableBooksComboBox();
+            loadReadersComboBox();
         }
+    }
+
+    private boolean validateFields() {
+        StringBuilder errorMessage = new StringBuilder();
+
+        if (cbReader.getValue() == null) {
+            errorMessage.append("⚠ O campo Leitor deve ser preenchido.\n");
+        }
+
+        if (cbBook.getValue() == null) {
+            errorMessage.append("⚠ O campo livro deve ser preenchido.\n");
+        }
+
+        if (dpReservationDate.getValue() == null) {
+            errorMessage.append("⚠ O campo data de reserva deve ser preenchido.\n");
+        }
+
+        if (!errorMessage.isEmpty()) {
+            AlertHelper.showAlert(errorMessage.toString().trim(), "ERROR");
+            return false;
+        }
+
+        return true;
     }
 
     private void configureTableColumns() {
@@ -154,4 +191,20 @@ public class ReservationAnchorController implements IOnChangeScreen {
         reservationsTv.setItems(FXCollections.observableArrayList(reservas));
     }
 
+    private void loadReadersComboBox() {
+        List<Leitor> leitores = leitorRepository.getAllLeitores();
+        cbReader.setItems(FXCollections.observableArrayList(leitores));
+    }
+
+    private void loadUnavailableBooksComboBox() {
+        List<Livro> livrosIndisponiveis = livroRepository.getLivrosIndisponiveis();
+        cbBook.setItems(FXCollections.observableArrayList(livrosIndisponiveis));
+    }
+
+
+    private void clearInputFields() {
+        cbReader.setValue(null);
+        cbBook.setValue(null);
+        dpReservationDate.setValue(null);
+    }
 }
