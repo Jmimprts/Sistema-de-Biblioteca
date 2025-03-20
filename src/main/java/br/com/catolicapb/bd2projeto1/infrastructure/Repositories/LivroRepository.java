@@ -7,9 +7,7 @@ import br.com.catolicapb.bd2projeto1.entity.Reserva;
 import br.com.catolicapb.bd2projeto1.infrastructure.loaders.DataLoader;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.criteria.*;
-import org.hibernate.loader.ast.spi.Loader;
 
-import javax.sound.sampled.DataLine;
 import java.util.List;
 
 public class LivroRepository {
