@@ -40,8 +40,6 @@ public class ReservationAnchorController implements IOnChangeScreen {
     @FXML
     private TableColumn<Reserva, LocalDate> reservationDateColumn;
     @FXML
-    private TextField searchTf;
-    @FXML
     private TableColumn<Reserva, StatusReserva> statusColumn;
 
     DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");

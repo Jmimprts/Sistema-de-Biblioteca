@@ -14,7 +14,7 @@ import jakarta.persistence.criteria.Root;
 import java.util.List;
 
 public class LeitorRepository {
-    public void adicionarLeitor(Leitor leitor) {
+    public void addLeitor(Leitor leitor) {
         EntityManager em = DataLoader.getEntityManager();
         em.getTransaction().begin();
         em.persist(leitor);
@@ -22,7 +22,29 @@ public class LeitorRepository {
         em.close();
     }
 
-    public void deletarLeitor(Long id) {
+    public List<Leitor> getAllLeitores() {
+        EntityManager em = DataLoader.getEntityManager();
+        List<Leitor> leitores = em.createQuery("SELECT l FROM Leitor l", Leitor.class).getResultList();
+        em.close();
+        return leitores;
+    }
+
+    public Leitor getLeitorById(Long id) {
+        EntityManager em = DataLoader.getEntityManager();
+        Leitor leitor = em.find(Leitor.class, id);
+        em.close();
+        return leitor;
+    }
+
+    public void updateLeitor(Leitor leitor) {
+        EntityManager em = DataLoader.getEntityManager();
+        em.getTransaction().begin();
+        em.merge(leitor);
+        em.getTransaction().commit();
+        em.close();
+    }
+
+    public void deleteLeitor(Long id) {
         EntityManager em = DataLoader.getEntityManager();
         em.getTransaction().begin();
         Leitor leitor = em.find(Leitor.class, id);
@@ -33,29 +55,20 @@ public class LeitorRepository {
         em.close();
     }
 
-    public int consultarTotalEmprestimoPorLeitor(Long idLeitor) {
-        EntityManager em = DataLoader.getEntityManager();
-        String jpql = "SELECT COUNT(e) FROM Emprestimo e WHERE e.leitor.id = :leitorId";
-        Long total = em.createQuery(jpql, Long.class)
-                .setParameter("leitorId", idLeitor)
-                .getSingleResult();
-
-        return total.intValue();
-    }
-
     public List<Leitor> getLeitoresComMaisDeUmEmprestimoPendente() {
         EntityManager em = DataLoader.getEntityManager();
         TypedQuery<Leitor> query = em.createQuery(
                 "SELECT l FROM Leitor l " +
-                        "WHERE (SELECT COUNT(e) FROM Emprestimo e WHERE e.leitor = l AND e.status = :statusPendente) > 1",
+                        "WHERE (SELECT COUNT(e) FROM Emprestimo e WHERE e.leitor = l AND (e.status = :statusPendente OR e.status = :statusAtrasado)) > 1",
                 Leitor.class);
         query.setParameter("statusPendente", StatusEmprestimo.PENDENTE);
+        query.setParameter("statusAtrasado", StatusEmprestimo.ATRASADO);
         List<Leitor> leitores = query.getResultList();
         em.close();
         return leitores;
     }
 
-    public List<Leitor> buscarLeitoresSemEmprestimos() {
+    public List<Leitor> getLeitoresSemEmprestimos() {
         EntityManager em = DataLoader.getEntityManager();
         TypedQuery<Leitor> query = em.createQuery(
                 "SELECT l FROM Leitor l " +
