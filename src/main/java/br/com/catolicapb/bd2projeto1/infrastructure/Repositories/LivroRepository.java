@@ -31,4 +31,12 @@ public class LivroRepository {
         em.close();
         return livros;
     }
+
+    public List<Livro> getLivrosIndisponiveis() {
+        EntityManager em = DataLoader.getEntityManager();
+        TypedQuery<Livro> query = em.createQuery("SELECT l FROM Livro l WHERE l.quantidadeDisponivel = 0", Livro.class);
+        List<Livro> livros = query.getResultList();
+        em.close();
+        return livros;
+    }
 }

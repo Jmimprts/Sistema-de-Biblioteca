@@ -71,12 +71,20 @@ public class LoansAnchorController implements IOnChangeScreen {
         Livro livro = cbBook.getValue();
         Leitor leitor = cbReader.getValue();
 
+        if(!validateFields()){
+            return;
+        }
+
         Emprestimo emprestimo = new Emprestimo();
         emprestimo.setDataEmprestimo(dataEmprestimo);
         emprestimo.setLivro(livro);
         emprestimo.setLeitor(leitor);
         emprestimoRepository.addEmprestimo(emprestimo);
 
+        loadEmprestimosByFilter();
+        loadEmprestimosByFilter();
+        loadAvailableBooksComboBox();
+        clearInputFields();
         AlertHelper.showAlert("empréstimo realizado com sucesso!", "INFO");
     }
 
@@ -87,6 +95,29 @@ public class LoansAnchorController implements IOnChangeScreen {
             loadReadersComboBox();
             loadAvailableBooksComboBox();
         }
+    }
+
+    private boolean validateFields() {
+        StringBuilder errorMessage = new StringBuilder();
+
+        if (cbReader.getValue() == null) {
+            errorMessage.append("⚠ O campo Leitor deve ser preenchido.\n");
+        }
+
+        if (cbBook.getValue() == null) {
+            errorMessage.append("⚠ O campo livro deve ser preenchido.\n");
+        }
+
+        if (dpReturnDate.getValue() == null) {
+            errorMessage.append("⚠ O campo data de devolução deve ser preenchido.\n");
+        }
+
+        if (!errorMessage.isEmpty()) {
+            AlertHelper.showAlert(errorMessage.toString().trim(), "ERROR");
+            return false;
+        }
+
+        return true;
     }
 
     private void configureTableColumns() {
@@ -195,5 +226,11 @@ public class LoansAnchorController implements IOnChangeScreen {
     private void loadAvailableBooksComboBox() {
         List<Livro> livrosDisponiveis = livroRepository.getLivrosDisponiveis();
         cbBook.setItems(FXCollections.observableArrayList(livrosDisponiveis));
+    }
+
+    private void clearInputFields() {
+        cbReader.setValue(null);
+        cbBook.setValue(null);
+        dpReturnDate.setValue(null);
     }
 }

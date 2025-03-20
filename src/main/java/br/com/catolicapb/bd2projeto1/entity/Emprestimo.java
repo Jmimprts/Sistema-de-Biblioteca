@@ -17,7 +17,7 @@ public class Emprestimo {
     private LocalDate dataDevolucao;
 
     @Enumerated(EnumType.STRING)
-    private StatusEmprestimo status;
+    private StatusEmprestimo status = StatusEmprestimo.PENDENTE;
 
     @ManyToOne
     @JoinColumn(name = "leitor_id")
