@@ -3,6 +3,7 @@ package br.com.catolicapb.bd2projeto1.javafx.controllers;
 import br.com.catolicapb.bd2projeto1.entity.Leitor;
 import br.com.catolicapb.bd2projeto1.infrastructure.Repositories.LeitorRepository;
 import br.com.catolicapb.bd2projeto1.javafx.interfaces.IOnChangeScreen;
+import br.com.catolicapb.bd2projeto1.util.AlertHelper;
 import br.com.catolicapb.bd2projeto1.util.ScreenManager;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.collections.FXCollections;
@@ -12,6 +13,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -21,6 +23,8 @@ public class ReadersAnchorController implements IOnChangeScreen {
 
     @FXML
     private TextField nameTf;
+    @FXML
+    private TextField CPFTf;
     @FXML
     private ChoiceBox<String> cbFilter;
     @FXML
@@ -47,7 +51,15 @@ public class ReadersAnchorController implements IOnChangeScreen {
 
     @FXML
     void addBtnAction() {
+        String name = nameTf.getText().trim();
+        String cpf = CPFTf.getText().trim();
 
+        Leitor leitor = new Leitor();
+        leitor.setCpf(cpf);
+        leitor.setNome(name);
+        leitorRepository.addLeitor(leitor);
+
+        AlertHelper.showAlert("Leitor adicionado com sucesso", "INFO");
     }
 
     @Override

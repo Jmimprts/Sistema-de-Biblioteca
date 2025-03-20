@@ -1,10 +1,13 @@
 package br.com.catolicapb.bd2projeto1.javafx.controllers;
 
 import br.com.catolicapb.bd2projeto1.entity.Livro;
+import br.com.catolicapb.bd2projeto1.entity.Usuario;
 import br.com.catolicapb.bd2projeto1.infrastructure.Repositories.LivroRepository;
 import br.com.catolicapb.bd2projeto1.javafx.interfaces.IOnChangeScreen;
+import br.com.catolicapb.bd2projeto1.util.AlertHelper;
 import br.com.catolicapb.bd2projeto1.util.ScreenManager;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TableColumn;
@@ -29,6 +32,8 @@ public class BooksAnchorController implements IOnChangeScreen {
     @FXML
     private TextField yearTf;
     @FXML
+    private TextField authorTf;
+    @FXML
     private TableColumn<Livro, String> authorColumn;
     @FXML
     private TableColumn<Livro, Integer> quantityColumn;
@@ -39,9 +44,24 @@ public class BooksAnchorController implements IOnChangeScreen {
     @FXML
     private TableView<Livro> booksTv;
 
+    private final ObservableList<Livro> boooksObservableList = FXCollections.observableArrayList();
+
+
     @FXML
     void addBtnAction() {
+        String quantity = quantityTf.getText().trim();
+        String title = titleTf.getText().trim();
+        String year = yearTf.getText().trim();
+        String author = authorTf.getText().trim();
 
+        Livro livro = new Livro();
+        livro.setQuantidadeDisponivel(Integer.parseInt(quantity));
+        livro.setTitulo(title);
+        livro.setAnoPublicacao(Integer.parseInt(year));
+        livro.setAutor(author);
+        livroRepository.addLivro(livro);
+
+        AlertHelper.showAlert("Livro adicionado com sucesso", "INFO");
     }
 
     @FXML

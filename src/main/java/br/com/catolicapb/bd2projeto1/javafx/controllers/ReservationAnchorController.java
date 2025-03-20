@@ -3,7 +3,9 @@ package br.com.catolicapb.bd2projeto1.javafx.controllers;
 import br.com.catolicapb.bd2projeto1.entity.Leitor;
 import br.com.catolicapb.bd2projeto1.entity.Livro;
 import br.com.catolicapb.bd2projeto1.entity.Reserva;
+import br.com.catolicapb.bd2projeto1.infrastructure.Repositories.ReservaRepository;
 import br.com.catolicapb.bd2projeto1.javafx.interfaces.IOnChangeScreen;
+import br.com.catolicapb.bd2projeto1.util.AlertHelper;
 import br.com.catolicapb.bd2projeto1.util.ScreenManager;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -15,6 +17,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 public class ReservationAnchorController implements IOnChangeScreen {
+    ReservaRepository reservaRepository = new ReservaRepository();
 
     @FXML
     private TableColumn<Reserva, String> bookColumn;
@@ -50,7 +53,17 @@ public class ReservationAnchorController implements IOnChangeScreen {
 
     @FXML
     void addBtnAction() {
+        LocalDate dataReserva = dpReservationDate.getValue();
+        Livro livro = cbBook.getValue();
+        Leitor leitor = cbReader.getValue();
 
+        Reserva reserva = new Reserva();
+        reserva.setDataReserva(dataReserva);
+        reserva.setLivro(livro);
+        reserva.setLeitor(leitor);
+        reservaRepository.addReserva(reserva);
+
+        AlertHelper.showAlert("Reserva realizada com sucesso!", "INFO");
     }
 
     @Override

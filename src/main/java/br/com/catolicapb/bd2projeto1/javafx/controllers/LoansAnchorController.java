@@ -5,6 +5,7 @@ import br.com.catolicapb.bd2projeto1.entity.Leitor;
 import br.com.catolicapb.bd2projeto1.entity.Livro;
 import br.com.catolicapb.bd2projeto1.infrastructure.Repositories.EmprestimoRepository;
 import br.com.catolicapb.bd2projeto1.javafx.interfaces.IOnChangeScreen;
+import br.com.catolicapb.bd2projeto1.util.AlertHelper;
 import br.com.catolicapb.bd2projeto1.util.ScreenManager;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -55,7 +56,17 @@ public class LoansAnchorController implements IOnChangeScreen {
 
     @FXML
     void addBtnAction() {
+        LocalDate dataEmprestimo = dpReturnDate.getValue();
+        Livro livro = cbBook.getValue();
+        Leitor leitor = cbReader.getValue();
 
+        Emprestimo emprestimo = new Emprestimo();
+        emprestimo.setDataEmprestimo(dataEmprestimo);
+        emprestimo.setLivro(livro);
+        emprestimo.setLeitor(leitor);
+        emprestimoRepository.addEmprestimo(emprestimo);
+
+        AlertHelper.showAlert("empréstimo realizado com sucesso!", "INFO");
     }
 
     @Override
