@@ -52,7 +52,7 @@ public class ReservationAnchorController implements IOnChangeScreen {
     public void initialize() {
         ScreenManager.addOnChangeScreenListener(this);
 
-        cbFilter.getItems().addAll("Exibir todas", "Somente ativas", "Somente concluídas", "Livros mais reservados");
+        cbFilter.getItems().addAll("Exibir todas", "Somente ativas", "Somente concluídas");
         cbFilter.setValue("Exibir todas");
 
         configureTableColumns();

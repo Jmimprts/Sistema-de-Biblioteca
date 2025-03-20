@@ -54,7 +54,7 @@ public class LoansAnchorController implements IOnChangeScreen {
     public void initialize() {
         ScreenManager.addOnChangeScreenListener(this);
 
-        cbFilter.getItems().addAll("Exibir todos", "Exibir empréstimos pendentes", "Exibir empréstimos atrasados");
+        cbFilter.getItems().addAll("Exibir todos", "Exibir empréstimos pendentes");
         cbFilter.setValue("Exibir todos");
 
         configureTableColumns();
@@ -166,6 +166,13 @@ public class LoansAnchorController implements IOnChangeScreen {
                             statusComboBox.setOnAction(event -> {
                                 StatusEmprestimo novoStatus = statusComboBox.getValue();
                                 if (novoStatus != null && novoStatus != currentEmprestimo.getStatus()) {
+                                    if (novoStatus == StatusEmprestimo.FINALIZADO) {
+                                        Livro livro = currentEmprestimo.getLivro();
+                                        if (livro != null) {
+                                            livroRepository.incrementQuantidadeLivroPorTitulo(livro.getTitulo());
+                                            loadAvailableBooksComboBox();
+                                        }
+                                    }
                                     currentEmprestimo.setStatus(novoStatus);
                                     emprestimoRepository.updateEmprestimo(currentEmprestimo);
                                     loansTv.refresh();
