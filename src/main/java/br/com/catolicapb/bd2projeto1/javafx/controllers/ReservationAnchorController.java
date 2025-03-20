@@ -75,6 +75,7 @@ public class ReservationAnchorController implements IOnChangeScreen {
         reserva.setDataReserva(dataReserva);
         reserva.setLivro(livro);
         reserva.setLeitor(leitor);
+        reserva.setStatus(StatusReserva.ATIVA);
         reservaRepository.addReserva(reserva);
 
         loadAllReservations();

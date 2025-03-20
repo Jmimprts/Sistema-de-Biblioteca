@@ -76,9 +76,11 @@ public class LoansAnchorController implements IOnChangeScreen {
         }
 
         Emprestimo emprestimo = new Emprestimo();
-        emprestimo.setDataEmprestimo(dataEmprestimo);
+        emprestimo.setDataEmprestimo(LocalDate.now());
+        emprestimo.setDataDevolucao(dataEmprestimo);
         emprestimo.setLivro(livro);
         emprestimo.setLeitor(leitor);
+        emprestimo.setStatus(StatusEmprestimo.PENDENTE);
         emprestimoRepository.addEmprestimo(emprestimo);
 
         loadEmprestimosByFilter();
