@@ -20,4 +20,16 @@ public class UsuarioRepository {
         em.close();
         return usuarios;
     }
+
+    public Usuario verificacaoUserESenha(String email, String senha) {
+
+        try (EntityManager em = DataLoader.getEntityManager()) {
+            return em.createQuery("SELECT u FROM Usuario u WHERE u.email = :email AND u.senha = :senha", Usuario.class)
+                    .setParameter("email", email)
+                    .setParameter("senha", senha)
+                    .getSingleResult();
+        } catch (Exception e) {
+            return null;
+        }
+    }
 }
