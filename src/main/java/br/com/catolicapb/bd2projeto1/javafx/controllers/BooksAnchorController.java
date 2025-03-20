@@ -64,6 +64,7 @@ public class BooksAnchorController implements IOnChangeScreen {
         livroRepository.addLivro(livro);
 
         clearFields();
+        loadLivrosByFilter();
         AlertHelper.showAlert("Livro adicionado com sucesso", "INFO");
     }
 
@@ -125,6 +126,7 @@ public class BooksAnchorController implements IOnChangeScreen {
 
     private boolean validateFields(String author, String year, String title, String quantity) {
         StringBuilder errorMessage = new StringBuilder();
+        int parseYear, parseQuantity;
 
         if (author.isEmpty()) {
             errorMessage.append("⚠ O campo Autor deve ser preenchido.\n");
@@ -132,7 +134,7 @@ public class BooksAnchorController implements IOnChangeScreen {
 
         if (year.isEmpty()) {
             errorMessage.append("⚠ O campo Email deve ser preenchido.\n");
-        } else if (year.matches("^[0-9]+$")) {
+        } else if (!year.matches("^[0-9]+$")) {
             errorMessage.append("⚠ O Campo só pode aceitar caracteres numéricos.\n");
         }else if (year.length() != 4) {
             errorMessage.append("⚠ Número deve ter 4 caracteres.\n");
@@ -140,7 +142,7 @@ public class BooksAnchorController implements IOnChangeScreen {
 
         if (quantity.isEmpty()) {
             errorMessage.append("⚠ O campo quantidade deve ser preenchido.\n");
-        } else if (quantity.matches("^[0-9]+$")) {
+        } else if (!quantity.matches("^[0-9]+$")) {
             errorMessage.append("⚠ O Campo só pode aceitar caracteres numéricos.\n");
         }
 

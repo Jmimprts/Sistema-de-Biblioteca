@@ -54,11 +54,17 @@ public class ReadersAnchorController implements IOnChangeScreen {
         String name = nameTf.getText().trim();
         String cpf = CPFTf.getText().trim();
 
+        if (!validateFields(name, cpf)){
+            return;
+        }
+
         Leitor leitor = new Leitor();
         leitor.setCpf(cpf);
         leitor.setNome(name);
         leitorRepository.addLeitor(leitor);
 
+        clearFields();
+        loadLeitoresByFilter();
         AlertHelper.showAlert("Leitor adicionado com sucesso", "INFO");
     }
 
@@ -85,6 +91,27 @@ public class ReadersAnchorController implements IOnChangeScreen {
         });
     }
 
+    private boolean validateFields(String name, String cpf) {
+        StringBuilder errorMessage = new StringBuilder();
+
+        if (name.isEmpty()) {
+            errorMessage.append("⚠ O campo Nome deve ser preenchido.\n");
+        }
+
+        if (cpf.isEmpty()) {
+            errorMessage.append("⚠ O campo cpf deve ser preenchido.\n");
+        } else if (cpf.length() != 11) {
+            errorMessage.append("⚠ cpf deve conter 11 caracteres.\n");
+        }
+
+        if (!errorMessage.isEmpty()) {
+            AlertHelper.showAlert(errorMessage.toString().trim(), "ERROR");
+            return false;
+        }
+
+        return true;
+    }
+
     private void loadLeitoresByFilter() {
         List<Leitor> leitores = null;
         String selectedFilter = cbFilter.getValue();
@@ -100,5 +127,10 @@ public class ReadersAnchorController implements IOnChangeScreen {
         if (leitores != null) {
             readersTv.setItems(FXCollections.observableArrayList(leitores));
         }
+    }
+
+    private void clearFields() {
+        nameTf.clear();
+        CPFTf.clear();
     }
 }
