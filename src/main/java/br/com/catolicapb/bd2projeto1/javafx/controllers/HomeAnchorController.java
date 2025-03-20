@@ -8,7 +8,6 @@ import javafx.scene.control.Label;
 
 public class HomeAnchorController implements IOnChangeScreen {
 
-    //SOMENTE TESTES, ALTERAR
     UsuarioRepository usuarioRepository = new UsuarioRepository();
 
     @FXML
@@ -30,7 +29,6 @@ public class HomeAnchorController implements IOnChangeScreen {
     public void onScreenChanged(String newScreen) {
         if (newScreen.equals("homeAnchor")) {
             loadLabelsCount();
-            System.out.println("AnchorPane da home carregada!");
         }
     }
 }

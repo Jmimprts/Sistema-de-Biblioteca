@@ -31,7 +31,7 @@ public class LoginScreenController {
         if (usuario != null){
             ScreenManager.changeScene("mainScene");
         } else {
-            AlertHelper.showAlert("Usuário não existe!", "ERROR");
+            AlertHelper.showAlert("Email e/ou senha inválidos!", "ERROR");
         }
     }
 }

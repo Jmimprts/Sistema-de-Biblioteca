@@ -13,14 +13,14 @@
 <AnchorPane prefHeight="457.0" prefWidth="600.0" styleClass="anchor-pane" stylesheets="@../../../../css/LoginStyle.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.catolicapb.bd2projeto1.javafx.controllers.LoginScreenController">
    <children>
       <Button layoutX="264.0" layoutY="367.0" mnemonicParsing="false" onAction="#btEnterAction" prefHeight="25.0" prefWidth="80.0" styleClass="login-button" text="Entrar" />
-      <TextField layoutX="211.0" layoutY="246.0" />
-      <PasswordField layoutX="211.0" layoutY="300.0" />
+      <TextField fx:id="emailTf" layoutX="211.0" layoutY="246.0" />
+      <PasswordField fx:id="pfPassword" layoutX="211.0" layoutY="300.0" />
 
       <!-- Substituindo os ícones antigos -->
       <FontIcon iconLiteral="fas-lock" iconSize="16" layoutX="366.0" layoutY="319.0" />
       <FontIcon iconLiteral="fas-user" iconSize="16" layoutX="366.0" layoutY="264.0" />
 
-      <Label layoutX="211.0" layoutY="229.0" text="Usuário" />
+      <Label layoutX="211.0" layoutY="229.0" text="Email" />
       <Label layoutX="211.0" layoutY="283.0" text="Senha" />
 
       <Button disable="true" layoutX="360.0" layoutY="246.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="29.0" styleClass="button-icon">
