@@ -44,26 +44,26 @@
                   <String fx:value="shadow" />
                </styleClass>
             </Button>
-            <TextField fx:id="authorTf" layoutX="110.0" layoutY="484.0" />
-            <Label layoutX="59.0" layoutY="487.0" text="Autor:">
+            <TextField fx:id="authorTf" layoutX="115.0" layoutY="475.0" />
+            <Label layoutX="66.0" layoutY="479.0" text="Autor:">
                <font>
                   <Font name="Tahoma" size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="yearTf" layoutX="431.0" layoutY="438.0" />
-            <Label layoutX="305.0" layoutY="442.0" text="Ano de Publicação:" wrapText="true">
+            <TextField fx:id="yearTf" layoutX="427.0" layoutY="421.0" />
+            <Label layoutX="298.0" layoutY="425.0" text="Ano de Publicação:" wrapText="true">
                <font>
                   <Font name="Tahoma" size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="titleTf" layoutX="110.0" layoutY="438.0" />
-            <Label layoutX="59.0" layoutY="442.0" text="Título:">
+            <TextField fx:id="titleTf" layoutX="115.0" layoutY="421.0" />
+            <Label layoutX="64.0" layoutY="425.0" text="Título:">
                <font>
                   <Font name="Tahoma" size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="quantityTf" layoutX="431.0" layoutY="484.0" />
-            <Label layoutX="347.0" layoutY="488.0" text="Quantidade:">
+            <TextField fx:id="quantityTf" layoutX="427.0" layoutY="475.0" />
+            <Label layoutX="340.0" layoutY="479.0" text="Quantidade:">
                <font>
                   <Font name="Tahoma" size="14.0" />
                </font>

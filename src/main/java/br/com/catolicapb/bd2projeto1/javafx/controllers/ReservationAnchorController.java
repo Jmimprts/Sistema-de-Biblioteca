@@ -1,15 +1,14 @@
 package br.com.catolicapb.bd2projeto1.javafx.controllers;
 
+import br.com.catolicapb.bd2projeto1.entity.Leitor;
+import br.com.catolicapb.bd2projeto1.entity.Livro;
 import br.com.catolicapb.bd2projeto1.entity.Reserva;
 import br.com.catolicapb.bd2projeto1.javafx.interfaces.IOnChangeScreen;
 import br.com.catolicapb.bd2projeto1.util.ScreenManager;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.time.LocalDate;
@@ -19,22 +18,22 @@ public class ReservationAnchorController implements IOnChangeScreen {
 
     @FXML
     private TableColumn<Reserva, String> bookColumn;
-
+    @FXML
+    private ChoiceBox<Livro> cbBook;
     @FXML
     private ChoiceBox<String> cbFilter;
-
+    @FXML
+    private ChoiceBox<Leitor> cbReader;
+    @FXML
+    private DatePicker dpReservationDate;
     @FXML
     private TableView<Reserva> loansTv;
-
     @FXML
     private TableColumn<Reserva, String> readerColumn;
-
     @FXML
     private TableColumn<Reserva, LocalDate> reservationDateColumn;
-
     @FXML
     private TextField searchTf;
-
     @FXML
     private TableColumn<Reserva, String> statusColumn;
 
@@ -47,6 +46,11 @@ public class ReservationAnchorController implements IOnChangeScreen {
 
         configureTableColumns();
         loadAllReservations();
+    }
+
+    @FXML
+    void addBtnAction() {
+
     }
 
     @Override
