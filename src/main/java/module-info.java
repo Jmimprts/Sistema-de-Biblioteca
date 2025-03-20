@@ -1,4 +1,4 @@
-module br.com.catolicapb.bd2projeto1 {
+module br.com.catolicapb.bd2projeto {
     requires javafx.controls;
     requires javafx.fxml;
     requires jakarta.persistence;
