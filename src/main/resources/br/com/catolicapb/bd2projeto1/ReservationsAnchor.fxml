@@ -7,10 +7,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-<?import org.kordamp.ikonli.javafx.FontIcon?>
 
 <AnchorPane prefHeight="597.0" prefWidth="658.0" stylesheets="@../../../../css/UsersStyle.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.catolicapb.bd2projeto1.javafx.controllers.ReservationAnchorController">
    <styleClass>
@@ -32,10 +30,8 @@
                   <TableColumn fx:id="statusColumn" minWidth="0.0" prefWidth="125.0" text="Status" />
                </columns>
             </TableView>
-            <TextField fx:id="searchTf" layoutX="14.0" layoutY="65.0" prefHeight="30.0" prefWidth="314.0" promptText="Procurar" styleClass="search" />
-            <FontIcon iconLiteral="fas-search" iconSize="16" layoutX="21.0" layoutY="86.0" />
-            <ChoiceBox fx:id="cbFilter" layoutX="431.0" layoutY="68.0" prefHeight="25.0" prefWidth="212.0" />
-            <Label layoutX="392.0" layoutY="72.0" text="Filtrar" />
+            <ChoiceBox fx:id="cbFilter" layoutX="241.0" layoutY="69.0" prefHeight="25.0" prefWidth="212.0" />
+            <Label layoutX="202.0" layoutY="73.0" text="Filtrar" />
             <Button layoutX="494.0" layoutY="547.0" mnemonicParsing="false" onAction="#addBtnAction" prefHeight="30.0" prefWidth="90.0" text="Adicionar">
                <font>
                   <Font name="Tahoma" size="14.0" />
