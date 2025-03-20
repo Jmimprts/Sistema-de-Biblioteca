@@ -17,6 +17,14 @@ public class LivroRepository {
         em.close();
     }
 
+    public void updateLivro(Livro livro) {
+        EntityManager em = DataLoader.getEntityManager();
+        em.getTransaction().begin();
+        em.merge(livro);
+        em.getTransaction().commit();
+        em.close();
+    }
+
     public List<Livro> getAllLivros() {
         EntityManager em = DataLoader.getEntityManager();
         List<Livro> livros = em.createQuery("SELECT l FROM Livro l", Livro.class).getResultList();

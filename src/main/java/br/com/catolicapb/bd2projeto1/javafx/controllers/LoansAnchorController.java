@@ -75,6 +75,10 @@ public class LoansAnchorController implements IOnChangeScreen {
             return;
         }
 
+        int newQuantity = livro.getQuantidadeDisponivel() - 1;
+        livro.setQuantidadeDisponivel(newQuantity);
+        livroRepository.updateLivro(livro);
+
         Emprestimo emprestimo = new Emprestimo();
         emprestimo.setDataEmprestimo(LocalDate.now());
         emprestimo.setDataDevolucao(dataEmprestimo);
