@@ -25,10 +25,11 @@
          <children>
             <TableView fx:id="booksTv" layoutX="12.0" layoutY="112.0" prefHeight="272.0" prefWidth="631.0">
                <columns>
-                  <TableColumn fx:id="titleColumn" prefWidth="206.0" text="Titulo" />
-                  <TableColumn fx:id="authorColumn" minWidth="0.0" prefWidth="197.0" text="Autor" />
-                  <TableColumn fx:id="yearColumn" prefWidth="119.0" text="Ano de Publicação" />
-                  <TableColumn fx:id="quantityColumn" prefWidth="108.0" text="Qtde. disponível" />
+                  <TableColumn fx:id="titleColumn" prefWidth="173.0" text="Titulo" />
+                  <TableColumn fx:id="authorColumn" minWidth="0.0" prefWidth="169.0" text="Autor" />
+                  <TableColumn fx:id="yearColumn" prefWidth="110.0" text="Ano de Publicação" />
+                  <TableColumn fx:id="quantityColumn" prefWidth="104.0" text="Disponíveis" />
+                  <TableColumn fx:id="reservationsColumn" prefWidth="74.0" text="Reservas" />
                </columns>
             </TableView>
             <TextField fx:id="searchTf" layoutX="14.0" layoutY="65.0" prefHeight="30.0" prefWidth="314.0" promptText="Procurar" styleClass="search" />
