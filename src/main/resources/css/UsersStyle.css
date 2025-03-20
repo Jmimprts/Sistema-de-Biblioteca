@@ -51,6 +51,7 @@
 .table-view .column-header .label {
     -fx-text-fill:#fff;
 }
+
 .update-btn {
     -fx-background-color:#304575;
     -fx-background-radius:8px;

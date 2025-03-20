@@ -24,12 +24,12 @@
             <String fx:value="shadow" />
          </styleClass>
          <children>
-            <TableView fx:id="loansTv" layoutX="12.0" layoutY="112.0" prefHeight="272.0" prefWidth="631.0">
+            <TableView fx:id="reservationsTv" layoutX="12.0" layoutY="112.0" prefHeight="272.0" prefWidth="631.0">
                <columns>
-                  <TableColumn fx:id="bookColumn" prefWidth="205.0" text="Livro" />
-                  <TableColumn fx:id="readerColumn" prefWidth="218.0" text="Leitor" />
-                  <TableColumn fx:id="reservationDateColumn" minWidth="0.0" prefWidth="113.0" text="Data da Reserva" />
-                  <TableColumn fx:id="statusColumn" minWidth="0.0" prefWidth="94.0" text="Status" />
+                  <TableColumn fx:id="readerColumn" prefWidth="200.0" text="Leitor" />
+                  <TableColumn fx:id="bookColumn" prefWidth="190.0" text="Livro" />
+                  <TableColumn fx:id="reservationDateColumn" minWidth="0.0" prefWidth="115.0" text="Data da Reserva" />
+                  <TableColumn fx:id="statusColumn" minWidth="0.0" prefWidth="125.0" text="Status" />
                </columns>
             </TableView>
             <TextField fx:id="searchTf" layoutX="14.0" layoutY="65.0" prefHeight="30.0" prefWidth="314.0" promptText="Procurar" styleClass="search" />
