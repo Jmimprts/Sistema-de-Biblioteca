@@ -20,4 +20,9 @@ public class Livro {
 
     @OneToMany(mappedBy = "livro")
     private List<Emprestimo> emprestimos;
+
+    @Override
+    public String toString() {
+        return this.titulo;
+    }
 }

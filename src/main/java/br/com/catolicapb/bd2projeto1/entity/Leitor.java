@@ -18,4 +18,9 @@ public class Leitor {
 
     @OneToMany(mappedBy = "leitor")
     private List<Reserva> reservas;
+
+    @Override
+    public String toString() {
+        return this.nome;
+    }
 }
