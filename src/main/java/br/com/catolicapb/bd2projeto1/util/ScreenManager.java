@@ -26,7 +26,7 @@ public class ScreenManager extends Application {
         loginScene = new DraggableScene(fxmlLogin);
         Parent fxmlMain = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/br/com/catolicapb/bd2projeto1/MainScreen.fxml")));
         mainScene = new DraggableScene(fxmlMain);
-        primaryStage.setScene(mainScene);
+        primaryStage.setScene(loginScene);
         primaryStage.show();
     }
 
