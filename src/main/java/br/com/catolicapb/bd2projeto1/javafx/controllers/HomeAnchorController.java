@@ -1,7 +1,7 @@
 package br.com.catolicapb.bd2projeto1.javafx.controllers;
 
-import br.com.catolicapb.bd2projeto1.infrastructure.Repositories.LeitorRepository;
-import br.com.catolicapb.bd2projeto1.infrastructure.Repositories.UsuarioRepository;
+import br.com.catolicapb.bd2projeto1.infrastructure.Repositories.*;
+
 import br.com.catolicapb.bd2projeto1.javafx.interfaces.IOnChangeScreen;
 import br.com.catolicapb.bd2projeto1.util.ScreenManager;
 import javafx.fxml.FXML;
@@ -11,12 +11,22 @@ public class HomeAnchorController implements IOnChangeScreen {
 
     //SOMENTE TESTES, ALTERAR
     UsuarioRepository usuarioRepository = new UsuarioRepository();
+    EmprestimoRepository emprestimoRepository = new EmprestimoRepository();
     LeitorRepository leitorRepository = new LeitorRepository();
+    LivroRepository livroRepository = new LivroRepository();
+    ReservaRepository reservaRepository = new ReservaRepository();
+
 
     @FXML
     private Label lblUsersCount;
     @FXML
     private Label lblLoansCount;
+    @FXML
+    private Label lblReadersCount;
+    @FXML
+    private Label lblBooksCount;
+    @FXML
+    private Label lblReservationsCount;
 
     @FXML
     public void initialize() {
@@ -24,6 +34,9 @@ public class HomeAnchorController implements IOnChangeScreen {
 
         loadLabelsCountUser();
         loadLabelsCountLoans();
+        loadLabelsCountReaders();
+        loadLabelCountBooks();
+        loadLabelCountReservations();
     }
 
     public void loadLabelsCountUser() {
@@ -32,8 +45,23 @@ public class HomeAnchorController implements IOnChangeScreen {
     }
 
     public void loadLabelsCountLoans(){
-        int loansCount = leitorRepository.getAllLeitores().size();
+        int loansCount = emprestimoRepository.getAllEmprestimos().size();
         lblLoansCount.setText(String.valueOf(loansCount));
+    }
+
+    public void loadLabelsCountReaders() {
+        int readersCount = leitorRepository.getAllLeitores().size();
+        lblReadersCount.setText(String.valueOf(readersCount));
+    }
+
+    public void loadLabelCountBooks() {
+        int booksCount = livroRepository.getAllLivros().size();
+        lblBooksCount.setText(String.valueOf(booksCount));
+    }
+
+    public void loadLabelCountReservations() {
+        int reservationsCount = reservaRepository.getAllReservas().size();
+        lblReservationsCount.setText(String.valueOf(reservationsCount));
     }
 
     @Override
