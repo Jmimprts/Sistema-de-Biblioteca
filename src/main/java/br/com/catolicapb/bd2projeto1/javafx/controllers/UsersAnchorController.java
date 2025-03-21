@@ -15,7 +15,6 @@ import java.util.List;
 
 public class UsersAnchorController implements IOnChangeScreen {
 
-    //SOMENTE TESTES, ALTERAR
     UsuarioRepository usuarioRepository = new UsuarioRepository();
 
     @FXML
@@ -62,7 +61,6 @@ public class UsersAnchorController implements IOnChangeScreen {
 
     private void loadAllUsuarios() {
 
-        //SOMENTE TESTES, ALTERAR
         List<Usuario> usuarios = usuarioRepository.getAllUsuarios();
 
         usuarioObservableList.setAll(usuarios);
@@ -79,7 +77,6 @@ public class UsersAnchorController implements IOnChangeScreen {
             return;
         }
 
-        //SOMENTE TESTES, ALTERAR
         Usuario usuario = new Usuario();
         usuario.setNome(name);
         usuario.setEmail(email);

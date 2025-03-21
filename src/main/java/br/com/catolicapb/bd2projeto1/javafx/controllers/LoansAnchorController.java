@@ -106,16 +106,20 @@ public class LoansAnchorController implements IOnChangeScreen {
     private boolean validateFields() {
         StringBuilder errorMessage = new StringBuilder();
 
-        if (cbReader.getValue() == null) {
-            errorMessage.append("⚠ O campo Leitor deve ser preenchido.\n");
+        if (cbReader.getValue() == null ||
+                "Selecione um leitor...".equals(cbReader.getValue().getNome()) ||
+                "Não há leitores...".equals(cbReader.getValue().getNome())) {
+            errorMessage.append("⚠ Um leitor deve ser selecionado.\n");
         }
 
-        if (cbBook.getValue() == null) {
-            errorMessage.append("⚠ O campo livro deve ser preenchido.\n");
+        if (cbBook.getValue() == null ||
+                "Selecione um livro...".equals(cbBook.getValue().getTitulo()) ||
+                "Não há livros disponíveis...".equals(cbBook.getValue().getTitulo())) {
+            errorMessage.append("⚠ Um Livro deve ser selecionado.\n");
         }
 
         if (dpReturnDate.getValue() == null) {
-            errorMessage.append("⚠ O campo data de devolução deve ser preenchido.\n");
+            errorMessage.append("⚠ Uma data de devolução deve ser selecionada.\n");
         }
 
         if (!errorMessage.isEmpty()) {
@@ -216,8 +220,6 @@ public class LoansAnchorController implements IOnChangeScreen {
             emprestimos = emprestimoRepository.getAllEmprestimos();
         } else if (selectedFilter.equals("Exibir empréstimos pendentes")) {
             emprestimos = emprestimoRepository.getEmprestimosPendentes();
-        } else if (selectedFilter.equals("Exibir empréstimos atrasados")) {
-            emprestimos = emprestimoRepository.getEmprestimosAtrasados();
         }
 
         if (emprestimos != null) {
@@ -232,13 +234,43 @@ public class LoansAnchorController implements IOnChangeScreen {
     }
 
     private void loadReadersComboBox() {
-        List<Leitor> leitores = leitorRepository.getAllLeitores();
+        List<Leitor> leitoresOriginais = leitorRepository.getAllLeitores();
+        List<Leitor> leitores = FXCollections.observableArrayList(leitoresOriginais);
+
+        Leitor placeholder = new Leitor();
+
+        if (leitores.isEmpty()) {
+            placeholder.setNome("Não há leitores...");
+            leitores.add(placeholder);
+            cbReader.setDisable(true);
+        } else {
+            placeholder.setNome("Selecione um leitor...");
+            leitores.add(0, placeholder);
+            cbReader.setDisable(false);
+        }
+
         cbReader.setItems(FXCollections.observableArrayList(leitores));
+        cbReader.setValue(placeholder);
     }
 
     private void loadAvailableBooksComboBox() {
-        List<Livro> livrosDisponiveis = livroRepository.getLivrosDisponiveis();
+        List<Livro> livrosOriginais = livroRepository.getLivrosDisponiveis();
+        List<Livro> livrosDisponiveis = FXCollections.observableArrayList(livrosOriginais);
+
+        Livro placeholder = new Livro();
+
+        if (livrosDisponiveis.isEmpty()) {
+            placeholder.setTitulo("Não há livros disponíveis...");
+            livrosDisponiveis.add(placeholder);
+            cbBook.setDisable(true);
+        } else {
+            placeholder.setTitulo("Selecione um livro...");
+            livrosDisponiveis.add(0, placeholder);
+            cbBook.setDisable(false);
+        }
+
         cbBook.setItems(FXCollections.observableArrayList(livrosDisponiveis));
+        cbBook.setValue(placeholder);
     }
 
     private void clearInputFields() {

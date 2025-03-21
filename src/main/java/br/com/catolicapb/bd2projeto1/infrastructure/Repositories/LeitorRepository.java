@@ -9,6 +9,7 @@ import jakarta.persistence.TypedQuery;
 import java.util.List;
 
 public class LeitorRepository {
+
     public void addLeitor(Leitor leitor) {
         EntityManager em = DataLoader.getEntityManager();
         em.getTransaction().begin();
@@ -24,37 +25,12 @@ public class LeitorRepository {
         return leitores;
     }
 
-    public Leitor getLeitorById(Long id) {
-        EntityManager em = DataLoader.getEntityManager();
-        Leitor leitor = em.find(Leitor.class, id);
-        em.close();
-        return leitor;
-    }
-
-    public void updateLeitor(Leitor leitor) {
-        EntityManager em = DataLoader.getEntityManager();
-        em.getTransaction().begin();
-        em.merge(leitor);
-        em.getTransaction().commit();
-        em.close();
-    }
-
-    public void deleteLeitor(Long id) {
-        EntityManager em = DataLoader.getEntityManager();
-        em.getTransaction().begin();
-        Leitor leitor = em.find(Leitor.class, id);
-        if (leitor != null) {
-            em.remove(leitor);
-        }
-        em.getTransaction().commit();
-        em.close();
-    }
-
     public List<Leitor> getLeitoresComMaisDeUmEmprestimoPendente() {
         EntityManager em = DataLoader.getEntityManager();
         TypedQuery<Leitor> query = em.createQuery(
                 "SELECT l FROM Leitor l " +
-                        "WHERE (SELECT COUNT(e) FROM Emprestimo e WHERE e.leitor = l AND (e.status = :statusPendente OR e.status = :statusAtrasado)) > 1",
+                        "WHERE (SELECT COUNT(e) FROM Emprestimo e WHERE e.leitor = l " +
+                        "AND (e.status = :statusPendente OR e.status = :statusAtrasado)) > 1",
                 Leitor.class);
         query.setParameter("statusPendente", StatusEmprestimo.PENDENTE);
         query.setParameter("statusAtrasado", StatusEmprestimo.ATRASADO);

@@ -125,7 +125,6 @@ public class BooksAnchorController implements IOnChangeScreen {
 
     private boolean validateFields(String author, String year, String title, String quantity) {
         StringBuilder errorMessage = new StringBuilder();
-        int parseYear, parseQuantity;
 
         if (author.isEmpty()) {
             errorMessage.append("⚠ O campo Autor deve ser preenchido.\n");

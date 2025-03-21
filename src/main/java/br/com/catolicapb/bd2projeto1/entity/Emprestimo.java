@@ -1,4 +1,5 @@
 package br.com.catolicapb.bd2projeto1.entity;
+
 import br.com.catolicapb.bd2projeto1.enums.StatusEmprestimo;
 import jakarta.persistence.*;
 import lombok.Data;

@@ -1,4 +1,5 @@
 package br.com.catolicapb.bd2projeto1.entity;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -15,5 +16,4 @@ public class Usuario {
     private String nome;
     private String email;
     private String senha;
-
 }

@@ -95,16 +95,20 @@ public class ReservationAnchorController implements IOnChangeScreen {
     private boolean validateFields() {
         StringBuilder errorMessage = new StringBuilder();
 
-        if (cbReader.getValue() == null) {
-            errorMessage.append("⚠ O campo Leitor deve ser preenchido.\n");
+        if (cbReader.getValue() == null ||
+                "Selecione um leitor...".equals(cbReader.getValue().getNome()) ||
+                "Não há leitores...".equals(cbReader.getValue().getNome())) {
+            errorMessage.append("⚠ Um leitor deve ser selecionado.\n");
         }
 
-        if (cbBook.getValue() == null) {
-            errorMessage.append("⚠ O campo livro deve ser preenchido.\n");
+        if (cbBook.getValue() == null ||
+                "Selecione um livro...".equals(cbBook.getValue().getTitulo()) ||
+                "Não há livros indisponíveis...".equals(cbBook.getValue().getTitulo())) {
+            errorMessage.append("⚠ Um Livro deve ser selecionado.\n");
         }
 
         if (dpReservationDate.getValue() == null) {
-            errorMessage.append("⚠ O campo data de reserva deve ser preenchido.\n");
+            errorMessage.append("⚠ Uma Data de reserva deve ser selecionada.\n");
         }
 
         if (!errorMessage.isEmpty()) {
@@ -191,15 +195,44 @@ public class ReservationAnchorController implements IOnChangeScreen {
     }
 
     private void loadReadersComboBox() {
-        List<Leitor> leitores = leitorRepository.getAllLeitores();
+        List<Leitor> leitoresOriginais = leitorRepository.getAllLeitores();
+        List<Leitor> leitores = FXCollections.observableArrayList(leitoresOriginais);
+
+        Leitor placeholder = new Leitor();
+
+        if (leitores.isEmpty()) {
+            placeholder.setNome("Não há leitores...");
+            leitores.add(placeholder);
+            cbReader.setDisable(true);
+        } else {
+            placeholder.setNome("Selecione um leitor...");
+            leitores.add(0, placeholder);
+            cbReader.setDisable(false);
+        }
+
         cbReader.setItems(FXCollections.observableArrayList(leitores));
+        cbReader.setValue(placeholder);
     }
 
     private void loadUnavailableBooksComboBox() {
-        List<Livro> livrosIndisponiveis = livroRepository.getLivrosIndisponiveis();
-        cbBook.setItems(FXCollections.observableArrayList(livrosIndisponiveis));
-    }
+        List<Livro> livrosOriginais = livroRepository.getLivrosIndisponiveis();
+        List<Livro> livrosIndisponiveis = FXCollections.observableArrayList(livrosOriginais);
 
+        Livro placeholder = new Livro();
+
+        if (livrosIndisponiveis.isEmpty()) {
+            placeholder.setTitulo("Não há livros indisponíveis...");
+            livrosIndisponiveis.add(placeholder);
+            cbBook.setDisable(true);
+        } else {
+            placeholder.setTitulo("Selecione um livro...");
+            livrosIndisponiveis.add(0, placeholder);
+            cbBook.setDisable(false);
+        }
+
+        cbBook.setItems(FXCollections.observableArrayList(livrosIndisponiveis));
+        cbBook.setValue(placeholder);
+    }
 
     private void clearInputFields() {
         cbReader.setValue(null);

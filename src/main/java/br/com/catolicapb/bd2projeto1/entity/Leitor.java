@@ -1,4 +1,5 @@
 package br.com.catolicapb.bd2projeto1.entity;
+
 import jakarta.persistence.*;
 import lombok.Data;
 import java.util.List;

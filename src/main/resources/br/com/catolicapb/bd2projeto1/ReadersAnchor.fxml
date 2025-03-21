@@ -30,7 +30,8 @@
                </columns>
             </TableView>
             <ChoiceBox fx:id="cbFilter" layoutX="240.0" layoutY="70.0" prefHeight="25.0" prefWidth="212.0" />
-            <Label layoutX="200.0" layoutY="75.0" text="Filtrar" />
+            <TextField fx:id="nameTf" layoutX="115.0" layoutY="421.0" />
+            <TextField fx:id="CPFTf" layoutX="427.0" layoutY="421.0" />
             <Button layoutX="494.0" layoutY="547.0" mnemonicParsing="false" onAction="#addBtnAction" prefHeight="30.0" prefWidth="90.0" text="Adicionar">
                <font>
                   <Font name="Tahoma" size="14.0" />
@@ -40,13 +41,12 @@
                   <String fx:value="shadow" />
                </styleClass>
             </Button>
-            <TextField fx:id="nameTf" layoutX="115.0" layoutY="421.0" />
+            <Label layoutX="200.0" layoutY="75.0" text="Filtrar" />
             <Label layoutX="64.0" layoutY="425.0" text="Nome:">
                <font>
                   <Font name="Tahoma" size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="CPFTf" layoutX="427.0" layoutY="421.0" />
             <Label layoutX="385.0" layoutY="425.0" text="CPF:">
                <font>
                   <Font name="Tahoma" size="14.0" />

@@ -7,6 +7,7 @@ import jakarta.persistence.EntityManager;
 import java.util.List;
 
 public class UsuarioRepository {
+
     public void addUsuario(Usuario usuario) {
         EntityManager em = DataLoader.getEntityManager();
         em.getTransaction().begin();
@@ -14,6 +15,7 @@ public class UsuarioRepository {
         em.getTransaction().commit();
         em.close();
     }
+
     public List<Usuario> getAllUsuarios() {
         EntityManager em = DataLoader.getEntityManager();
         List<Usuario> usuarios = em.createQuery("SELECT u FROM Usuario u", Usuario.class).getResultList();
@@ -24,7 +26,8 @@ public class UsuarioRepository {
     public Usuario verificacaoUserESenha(String email, String senha) {
 
         try (EntityManager em = DataLoader.getEntityManager()) {
-            return em.createQuery("SELECT u FROM Usuario u WHERE u.email = :email AND u.senha = :senha", Usuario.class)
+            return em.createQuery(
+                    "SELECT u FROM Usuario u WHERE u.email = :email AND u.senha = :senha", Usuario.class)
                     .setParameter("email", email)
                     .setParameter("senha", senha)
                     .getSingleResult();

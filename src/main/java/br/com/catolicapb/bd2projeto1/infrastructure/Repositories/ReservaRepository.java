@@ -17,12 +17,14 @@ public class ReservaRepository {
         em.getTransaction().commit();
         em.close();
     }
+
     public List<Reserva> getAllReservas() {
         EntityManager em = DataLoader.getEntityManager();
         List<Reserva> reservas = em.createQuery("SELECT r FROM Reserva r", Reserva.class).getResultList();
         em.close();
         return reservas;
     }
+
     public void updateReserva(Reserva reserva) {
         EntityManager em = DataLoader.getEntityManager();
         em.getTransaction().begin();
@@ -30,10 +32,12 @@ public class ReservaRepository {
         em.getTransaction().commit();
         em.close();
     }
+
     public int countActiveReservationsByLivro(Livro livro) {
         EntityManager em = DataLoader.getEntityManager();
         try {
-            Long countResult = em.createQuery("SELECT COUNT(r) FROM Reserva r WHERE r.livro = :livro AND r.status = :status", Long.class)
+            Long countResult = em.createQuery(
+                    "SELECT COUNT(r) FROM Reserva r WHERE r.livro = :livro AND r.status = :status", Long.class)
                     .setParameter("livro", livro)
                     .setParameter("status", StatusReserva.ATIVA)
                     .getSingleResult();

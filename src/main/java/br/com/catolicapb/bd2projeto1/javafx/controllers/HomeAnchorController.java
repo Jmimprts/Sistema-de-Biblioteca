@@ -9,13 +9,11 @@ import javafx.scene.control.Label;
 
 public class HomeAnchorController implements IOnChangeScreen {
 
-    //SOMENTE TESTES, ALTERAR
     UsuarioRepository usuarioRepository = new UsuarioRepository();
     EmprestimoRepository emprestimoRepository = new EmprestimoRepository();
     LeitorRepository leitorRepository = new LeitorRepository();
     LivroRepository livroRepository = new LivroRepository();
     ReservaRepository reservaRepository = new ReservaRepository();
-
 
     @FXML
     private Label lblUsersCount;
@@ -32,6 +30,10 @@ public class HomeAnchorController implements IOnChangeScreen {
     public void initialize() {
         ScreenManager.addOnChangeScreenListener(this);
 
+        loadAllLabels();
+    }
+
+    private void loadAllLabels() {
         loadLabelsCountUser();
         loadLabelsCountLoans();
         loadLabelsCountReaders();
@@ -39,27 +41,27 @@ public class HomeAnchorController implements IOnChangeScreen {
         loadLabelCountReservations();
     }
 
-    public void loadLabelsCountUser() {
+    private void loadLabelsCountUser() {
         int usersCount = usuarioRepository.getAllUsuarios().size();
         lblUsersCount.setText(String.valueOf(usersCount));
     }
 
-    public void loadLabelsCountLoans(){
+    private void loadLabelsCountLoans(){
         int loansCount = emprestimoRepository.getAllEmprestimos().size();
         lblLoansCount.setText(String.valueOf(loansCount));
     }
 
-    public void loadLabelsCountReaders() {
+    private void loadLabelsCountReaders() {
         int readersCount = leitorRepository.getAllLeitores().size();
         lblReadersCount.setText(String.valueOf(readersCount));
     }
 
-    public void loadLabelCountBooks() {
+    private void loadLabelCountBooks() {
         int booksCount = livroRepository.getAllLivros().size();
         lblBooksCount.setText(String.valueOf(booksCount));
     }
 
-    public void loadLabelCountReservations() {
+    private void loadLabelCountReservations() {
         int reservationsCount = reservaRepository.getAllReservas().size();
         lblReservationsCount.setText(String.valueOf(reservationsCount));
     }
@@ -67,8 +69,7 @@ public class HomeAnchorController implements IOnChangeScreen {
     @Override
     public void onScreenChanged(String newScreen) {
         if (newScreen.equals("homeAnchor")) {
-            loadLabelsCountUser();
-            System.out.println("AnchorPane da home carregada!");
+            loadAllLabels();
         }
     }
 }

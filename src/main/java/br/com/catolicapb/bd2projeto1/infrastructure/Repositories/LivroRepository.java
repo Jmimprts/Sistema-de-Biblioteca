@@ -1,6 +1,7 @@
 package br.com.catolicapb.bd2projeto1.infrastructure.Repositories;
 
 import br.com.catolicapb.bd2projeto1.entity.Livro;
+import br.com.catolicapb.bd2projeto1.enums.StatusReserva;
 import br.com.catolicapb.bd2projeto1.infrastructure.loaders.DataLoader;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
@@ -50,7 +51,8 @@ public class LivroRepository {
 
     public List<Livro> getLivrosDisponiveis() {
         EntityManager em = DataLoader.getEntityManager();
-        TypedQuery<Livro> query = em.createQuery("SELECT l FROM Livro l WHERE l.quantidadeDisponivel > 0", Livro.class);
+        TypedQuery<Livro> query = em.createQuery(
+                "SELECT l FROM Livro l WHERE l.quantidadeDisponivel > 0", Livro.class);
         List<Livro> livros = query.getResultList();
         em.close();
         return livros;
@@ -58,7 +60,8 @@ public class LivroRepository {
 
     public List<Livro> getLivrosIndisponiveis() {
         EntityManager em = DataLoader.getEntityManager();
-        TypedQuery<Livro> query = em.createQuery("SELECT l FROM Livro l WHERE l.quantidadeDisponivel = 0", Livro.class);
+        TypedQuery<Livro> query = em.createQuery(
+                "SELECT l FROM Livro l WHERE l.quantidadeDisponivel = 0", Livro.class);
         List<Livro> livros = query.getResultList();
         em.close();
         return livros;
@@ -68,11 +71,11 @@ public class LivroRepository {
         EntityManager em = DataLoader.getEntityManager();
         TypedQuery<Livro> query = em.createQuery(
                 "SELECT l FROM Livro l " +
-                        "JOIN l.reservas r " +
+                        "JOIN l.reservas r ON r.status = :statusAtiva " +
                         "GROUP BY l.id " +
                         "ORDER BY COUNT(r.id) DESC", Livro.class);
-
-        query.setMaxResults(5); // Define o limite corretamente
+        query.setParameter("statusAtiva", StatusReserva.ATIVA);
+        query.setMaxResults(5);
         List<Livro> livros = query.getResultList();
         em.close();
         return livros;

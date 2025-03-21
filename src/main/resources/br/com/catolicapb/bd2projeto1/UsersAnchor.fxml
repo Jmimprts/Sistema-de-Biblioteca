@@ -24,6 +24,10 @@
                   <TableColumn fx:id="emailColumn" minWidth="0.0" prefWidth="337.0" text="Email" />
               </columns>
             </TableView>
+            <TextField fx:id="nameTf" layoutX="115.0" layoutY="421.0" />
+            <TextField fx:id="emailTf" layoutX="115.0" layoutY="475.0" />
+            <PasswordField fx:id="pfPassword" layoutX="427.0" layoutY="421.0" />
+            <PasswordField fx:id="pfConfirmPassword" layoutX="427.0" layoutY="475.0" />
             <Button layoutX="494.0" layoutY="547.0" mnemonicParsing="false" onAction="#addBtnAction" prefHeight="30.0" prefWidth="90.0" text="Adicionar">
                <font>
                   <Font name="Tahoma" size="14.0" />
@@ -33,20 +37,16 @@
                   <String fx:value="shadow" />
                </styleClass>
             </Button>
-            <TextField fx:id="nameTf" layoutX="115.0" layoutY="421.0" />
             <Label layoutX="64.0" layoutY="425.0" text="Nome:">
                <font>
                   <Font name="Tahoma" size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="emailTf" layoutX="115.0" layoutY="475.0" />
             <Label layoutX="66.0" layoutY="479.0" text="Email:">
                <font>
                   <Font name="Tahoma" size="14.0" />
                </font>
             </Label>
-            <PasswordField fx:id="pfPassword" layoutX="427.0" layoutY="421.0" />
-            <PasswordField fx:id="pfConfirmPassword" layoutX="427.0" layoutY="475.0" />
             <Label layoutX="372.0" layoutY="425.0" text="Senha:">
                <font>
                   <Font name="Tahoma" size="14.0" />

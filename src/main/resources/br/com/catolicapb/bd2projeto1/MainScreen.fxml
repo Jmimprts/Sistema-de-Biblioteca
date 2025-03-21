@@ -19,27 +19,27 @@
                      <children>
                         <AnchorPane prefHeight="626.0" prefWidth="172.0" styleClass="nav-form">
                            <children>
-                              <Button fx:id="homeBtn" layoutX="1.0" layoutY="85.0" mnemonicParsing="false" onAction="#homeBtnAction" prefHeight="25.0" prefWidth="171.0" styleClass="nav-btn" text="Inicio">
+                              <Button fx:id="homeBtn" layoutX="1.0" layoutY="85.0" mnemonicParsing="false" onAction="#homeBtnAction" prefHeight="45.0" prefWidth="171.0" styleClass="nav-btn" text="Inicio">
                                  <graphic>
                                     <FontIcon fill="WHITE" iconLiteral="fas-home" iconSize="16" />
                                  </graphic>
                               </Button>
-                              <Button fx:id="usersBtn" layoutX="1.0" layoutY="146.0" mnemonicParsing="false" onAction="#usersBtnAction" prefHeight="25.0" prefWidth="171.0" styleClass="nav-btn" text="Usuários">
+                              <Button fx:id="usersBtn" layoutX="1.0" layoutY="155.0" mnemonicParsing="false" onAction="#usersBtnAction" prefHeight="45.0" prefWidth="171.0" styleClass="nav-btn" text="Usuários">
                                  <graphic>
                                     <FontIcon fill="WHITE" iconLiteral="fas-users" iconSize="16" />
                                  </graphic>
                               </Button>
-                              <Button fx:id="readersBtn" layoutX="1.0" layoutY="210.0" mnemonicParsing="false" onAction="#readersBtnAction" prefHeight="25.0" prefWidth="171.0" styleClass="nav-btn" text="Leitores">
+                              <Button fx:id="readersBtn" layoutX="1.0" layoutY="225.0" mnemonicParsing="false" onAction="#readersBtnAction" prefHeight="45.0" prefWidth="171.0" styleClass="nav-btn" text="Leitores">
                                  <graphic>
                                     <FontIcon fill="WHITE" iconLiteral="fas-book-reader" iconSize="16" />
                                  </graphic>
                               </Button>
-                              <Button fx:id="booksBtn" layoutX="1.0" layoutY="270.0" mnemonicParsing="false" onAction="#booksBtnAction" prefHeight="25.0" prefWidth="171.0" styleClass="nav-btn" text="Livros">
+                              <Button fx:id="booksBtn" layoutX="1.0" layoutY="295.0" mnemonicParsing="false" onAction="#booksBtnAction" prefHeight="45.0" prefWidth="171.0" styleClass="nav-btn" text="Livros">
                                  <graphic>
                                     <FontIcon fill="WHITE" iconLiteral="fas-book" iconSize="16" />
                                  </graphic>
                               </Button>
-                              <Button fx:id="loansBtn" layoutX="1.0" layoutY="323.0" mnemonicParsing="false" onAction="#loansBtnAction" prefHeight="30.0" prefWidth="171.0" styleClass="nav-btn" text="Empréstimos">
+                              <Button fx:id="loansBtn" layoutX="1.0" layoutY="365.0" mnemonicParsing="false" onAction="#loansBtnAction" prefHeight="45.0" prefWidth="171.0" styleClass="nav-btn" text="Empréstimos">
                                  <graphic>
                                     <FontIcon iconColor="WHITE" iconLiteral="fas-handshake" iconSize="16" />
                                  </graphic>
@@ -53,7 +53,7 @@
                                     <String fx:value="shadow" />
                                  </styleClass>
                               </Button>
-                              <Button fx:id="reservationsBtn" layoutX="1.0" layoutY="381.0" mnemonicParsing="false" onAction="#reservationsBtnAction" prefHeight="30.0" prefWidth="171.0" styleClass="nav-btn" text="Reservas">
+                              <Button fx:id="reservationsBtn" layoutX="1.0" layoutY="435.0" mnemonicParsing="false" onAction="#reservationsBtnAction" prefHeight="45.0" prefWidth="171.0" styleClass="nav-btn" text="Reservas">
                                  <graphic>
                                     <FontIcon iconColor="WHITE" iconLiteral="fas-calendar-alt" iconSize="16" />
                                  </graphic>
