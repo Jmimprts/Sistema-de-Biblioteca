@@ -9,6 +9,7 @@ import jakarta.persistence.EntityManager;
 import java.util.List;
 
 public class ReservaRepository {
+
     public void addReserva(Reserva reserva) {
         EntityManager em = DataLoader.getEntityManager();
         em.getTransaction().begin();

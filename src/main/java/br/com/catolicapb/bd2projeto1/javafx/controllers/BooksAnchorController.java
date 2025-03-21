@@ -108,8 +108,7 @@ public class BooksAnchorController implements IOnChangeScreen {
         } else if (selectedFilter.equals("Exibir apenas os disponíveis")) {
             livros = livroRepository.getLivrosDisponiveis();
         } else if (selectedFilter.equals("Exibir os mais reservados")) {
-            // Lógica para exibir os mais reservados será adicionada depois
-            livros = livroRepository.getAllLivros(); // Por enquanto, exibe todos
+            livros = livroRepository.getLivrosMaisReservados();
         }
 
         if (livros != null) {

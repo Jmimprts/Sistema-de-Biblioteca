@@ -15,7 +15,7 @@ public class Reserva {
     private LocalDate dataReserva;
 
     @Enumerated(EnumType.STRING)
-    private StatusReserva status = StatusReserva.ATIVA;
+    private StatusReserva status;
 
     @ManyToOne
     @JoinColumn(name = "livro_id")
