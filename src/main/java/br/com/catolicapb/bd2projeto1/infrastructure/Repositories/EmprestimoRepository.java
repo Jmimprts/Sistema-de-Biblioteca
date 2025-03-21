@@ -10,7 +10,6 @@ import jakarta.persistence.TypedQuery;
 import java.util.List;
 
 public class EmprestimoRepository {
-
     public void addEmprestimo(Emprestimo emprestimo) {
         EntityManager em = DataLoader.getEntityManager();
         em.getTransaction().begin();

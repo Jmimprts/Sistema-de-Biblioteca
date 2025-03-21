@@ -1,15 +1,10 @@
 package br.com.catolicapb.bd2projeto1.infrastructure.Repositories;
 
-import br.com.catolicapb.bd2projeto1.entity.Emprestimo;
 import br.com.catolicapb.bd2projeto1.entity.Leitor;
 import br.com.catolicapb.bd2projeto1.enums.StatusEmprestimo;
 import br.com.catolicapb.bd2projeto1.infrastructure.loaders.DataLoader;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
-import jakarta.persistence.criteria.CriteriaBuilder;
-import jakarta.persistence.criteria.CriteriaQuery;
-import jakarta.persistence.criteria.Join;
-import jakarta.persistence.criteria.Root;
 
 import java.util.List;
 
@@ -78,5 +73,4 @@ public class LeitorRepository {
         em.close();
         return leitores;
     }
-
 }

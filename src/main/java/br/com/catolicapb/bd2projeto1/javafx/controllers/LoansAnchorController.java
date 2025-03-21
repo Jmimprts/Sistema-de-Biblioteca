@@ -54,7 +54,7 @@ public class LoansAnchorController implements IOnChangeScreen {
     public void initialize() {
         ScreenManager.addOnChangeScreenListener(this);
 
-        cbFilter.getItems().addAll("Exibir todos", "Exibir empréstimos pendentes", "Exibir empréstimos atrasados");
+        cbFilter.getItems().addAll("Exibir todos", "Exibir empréstimos pendentes");
         cbFilter.setValue("Exibir todos");
 
         configureTableColumns();
@@ -71,12 +71,26 @@ public class LoansAnchorController implements IOnChangeScreen {
         Livro livro = cbBook.getValue();
         Leitor leitor = cbReader.getValue();
 
+        if(!validateFields()){
+            return;
+        }
+
+        int newQuantity = livro.getQuantidadeDisponivel() - 1;
+        livro.setQuantidadeDisponivel(newQuantity);
+        livroRepository.updateLivro(livro);
+
         Emprestimo emprestimo = new Emprestimo();
-        emprestimo.setDataEmprestimo(dataEmprestimo);
+        emprestimo.setDataEmprestimo(LocalDate.now());
+        emprestimo.setDataDevolucao(dataEmprestimo);
         emprestimo.setLivro(livro);
         emprestimo.setLeitor(leitor);
+        emprestimo.setStatus(StatusEmprestimo.PENDENTE);
         emprestimoRepository.addEmprestimo(emprestimo);
 
+        loadEmprestimosByFilter();
+        loadEmprestimosByFilter();
+        loadAvailableBooksComboBox();
+        clearInputFields();
         AlertHelper.showAlert("empréstimo realizado com sucesso!", "INFO");
     }
 
@@ -87,6 +101,29 @@ public class LoansAnchorController implements IOnChangeScreen {
             loadReadersComboBox();
             loadAvailableBooksComboBox();
         }
+    }
+
+    private boolean validateFields() {
+        StringBuilder errorMessage = new StringBuilder();
+
+        if (cbReader.getValue() == null) {
+            errorMessage.append("⚠ O campo Leitor deve ser preenchido.\n");
+        }
+
+        if (cbBook.getValue() == null) {
+            errorMessage.append("⚠ O campo livro deve ser preenchido.\n");
+        }
+
+        if (dpReturnDate.getValue() == null) {
+            errorMessage.append("⚠ O campo data de devolução deve ser preenchido.\n");
+        }
+
+        if (!errorMessage.isEmpty()) {
+            AlertHelper.showAlert(errorMessage.toString().trim(), "ERROR");
+            return false;
+        }
+
+        return true;
     }
 
     private void configureTableColumns() {
@@ -129,6 +166,13 @@ public class LoansAnchorController implements IOnChangeScreen {
                             statusComboBox.setOnAction(event -> {
                                 StatusEmprestimo novoStatus = statusComboBox.getValue();
                                 if (novoStatus != null && novoStatus != currentEmprestimo.getStatus()) {
+                                    if (novoStatus == StatusEmprestimo.FINALIZADO) {
+                                        Livro livro = currentEmprestimo.getLivro();
+                                        if (livro != null) {
+                                            livroRepository.incrementQuantidadeLivroPorTitulo(livro.getTitulo());
+                                            loadAvailableBooksComboBox();
+                                        }
+                                    }
                                     currentEmprestimo.setStatus(novoStatus);
                                     emprestimoRepository.updateEmprestimo(currentEmprestimo);
                                     loansTv.refresh();
@@ -195,5 +239,11 @@ public class LoansAnchorController implements IOnChangeScreen {
     private void loadAvailableBooksComboBox() {
         List<Livro> livrosDisponiveis = livroRepository.getLivrosDisponiveis();
         cbBook.setItems(FXCollections.observableArrayList(livrosDisponiveis));
+    }
+
+    private void clearInputFields() {
+        cbReader.setValue(null);
+        cbBook.setValue(null);
+        dpReturnDate.setValue(null);
     }
 }
