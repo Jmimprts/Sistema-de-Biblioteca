@@ -31,8 +31,8 @@
                   <TableColumn fx:id="statusColumn" prefWidth="118.0" text="Status" />
                </columns>
             </TableView>
-            <ChoiceBox fx:id="cbFilter" layoutX="242.0" layoutY="65.0" prefHeight="25.0" prefWidth="212.0" />
-            <Label layoutX="203.0" layoutY="69.0" text="Filtrar" />
+            <ChoiceBox fx:id="cbFilter" layoutX="240.0" layoutY="70.0" prefHeight="25.0" prefWidth="212.0" />
+            <Label layoutX="200.0" layoutY="75.0" text="Filtrar" />
             <Button layoutX="494.0" layoutY="547.0" mnemonicParsing="false" onAction="#addBtnAction" prefHeight="30.0" prefWidth="90.0" text="Adicionar">
                <font>
                   <Font name="Tahoma" size="14.0" />
